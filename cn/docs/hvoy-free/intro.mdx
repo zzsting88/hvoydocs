@@ -1,0 +1,102 @@
+---
+title: "HvoyFree 介绍"
+sidebarTitle: "产品介绍"
+description: "每月多用 13 亿 Token"
+mode: wide
+---
+
+## 什么是 HvoyFree
+
+每家 AI 实验室都提供免费额度, 单独拿一家的免费额度只能当玩具
+
+但如果把十几家叠在一起，就能拼出大约 **每月 13 亿 Token** 的token.
+
+HvoyFree 把这些全部收集到一个地方, 把你客户端指向聚合的地址, 你可以轻松的使用这些免费API, 够日常简单使用.
+
+这些API都只在本地存储,没有任何安全隐患.
+
+## 支持的提供商
+1. Google, 查看[google教程](/cn/docs/hvoy-free/google)
+2. Cloudflare, 查看[cf教程](/cn/docs/hvoy-free/Cloudflare)
+3. Cerebras
+4. SambaNova
+5. Mistral
+6. OpenRouter
+7. GitHub Models
+8. Groq
+9. Z.ai (智谱)
+10. Cohere
+11. NVIDIA NIM
+12. Ollama Cloud
+13. Pollinations、Ollama
+
+完整列表持续更新中
+
+
+## 快速开始
+1. 在上面支持的供应商列表里, 拿到免费的API key
+2. 下载并打开HvoyApp
+3. ![添加API key](/assets/images/hvoyFree1.jpg)
+4. 可以在这里设置调用顺序![调用顺序](/assets/images/hvoyFree2.jpg)
+
+
+## 使用示例
+
+如果你想要使用这些apikey
+
+只需将 `base_url` http://localhost:4321/v1 即可.
+
+<CodeGroup>
+```python Python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="http://localhost:4321/v1",
+    api_key="hvoyfree-key",
+)
+
+resp = client.chat.completions.create(
+    model="auto",
+    messages=[{"role": "user", "content": "你好"}],
+)
+print(resp.choices[0].message.content)
+```
+
+```bash curl
+curl http://localhost:4321/v1/chat/completions \
+  -H "Authorization: Bearer hvoyfree-key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "auto",
+    "messages": [{"role": "user", "content": "你好"}]
+  }'
+```
+
+```python 流式输出
+stream = client.chat.completions.create(
+    model="auto",
+    messages=[{"role": "user", "content": "写一首关于代码的诗"}],
+    stream=True,
+)
+for chunk in stream:
+    print(chunk.choices[0].delta.content or "", end="", flush=True)
+```
+</CodeGroup>
+
+`model` 设为 `"auto"` 时路由器自动选择最优模型，也可以指定具体模型如 `"gemini-2.5-flash"`。
+
+每个响应会携带 `X-Routed-Via` Header 告诉你实际是哪个提供商/模型处理了请求。
+
+## 注意事项
+
+<Warning>
+免费额度可能随时变化，没有 SLA 保障。这个只供你平时尝鲜, 如果你要做正式产品，请使用付费 API。
+</Warning>
+
+- 没有最顶级模型
+- 智能水平会随时间波动
+- 延迟差异大
+
+## 开源协议
+
+HvoyFree 基于https://github.com/tashfeenahmed/freellmapi 做了小改动.

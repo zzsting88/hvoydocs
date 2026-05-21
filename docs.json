@@ -1,0 +1,94 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Hvoy Docs",
+  "colors": {
+    "primary": "#0066CC",
+    "light": "#2997FF",
+    "dark": "#0066CC"
+  },
+  "favicon": "/assets/logo/favicon.png",
+  "logo": {
+    "light": "/assets/logo/favicon.png",
+    "dark": "/assets/logo/favicon.png",
+    "href": "https://hvoy.ai"
+  },
+  "appearance": {
+    "default": "light"
+  },
+  "fonts": {
+    "family": "Inter",
+    "heading": {
+      "family": "Inter",
+      "weight": 600
+    },
+    "body": {
+      "family": "Inter",
+      "weight": 400
+    }
+  },
+  "background": {
+    "color": {
+      "light": "#F5F5F7",
+      "dark": "#252527"
+    }
+  },
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "文档首页",
+      "href": "https://docs.hvoy.ai"
+    }
+  },
+  "footer": {
+    "socials": {
+      "website": "https://hvoy.ai",
+      "github": "https://github.com/hvoy"
+    }
+  },
+  "styling": {
+    "codeblocks": {
+      "theme": {
+        "light": "min-light",
+        "dark": "min-dark"
+      }
+    }
+  },
+  "navigation": {
+    "languages": [
+      {
+        "language": "cn",
+        "default": true,
+        "tabs": [
+          {
+            "tab": "文档",
+            "groups": [
+              {
+                "group": "开始使用",
+                "pages": [
+                  "cn/docs/get-started/about",
+                  "cn/docs/get-started/help"
+                ]
+              },
+              {
+                "group": "HvoyFree",
+                "pages": [
+                  "cn/docs/hvoy-free/intro"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "tabs": [
+          {
+            "tab": "Docs",
+            "groups": [{ "group": "Getting started", "pages": ["en/index"] }]
+          }
+        ]
+      }
+    ]
+  }
+}
