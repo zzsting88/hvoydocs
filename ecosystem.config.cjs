@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "tongapi-docs",
+      name: "hvoydocs",
       script: "bash",
       args: ["-lc", "mint dev --port 3333"],
       cwd: __dirname,
