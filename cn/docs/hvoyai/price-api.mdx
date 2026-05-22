@@ -1,0 +1,56 @@
+---
+title: "第三方价格接口规范"
+sidebarTitle: "第三方价格接口规范"
+description: "本文档定义一个统一的第三方价格接口，供 API 中转站对外实现，供 hvoy.ai 抓取价格数据"
+mode: wide
+---
+
+
+hvoy.ai 默认支持newapi的价格获取, hvoy.ai 默认合作站长允许hvoy.ai 抓取价格进行展示. 如果有站长不允许价格抓取, 请联系我们关闭.
+
+我们也支持部分sub2api的价格抓取.
+
+最新的文档请参考  https://hvoy.ai/docs/provider-price-api-markdown
+
+对于一些不支持格式的站点,  请沿用这个规范, 向hvoy.ai开放接口
+
+请准备一个接口, 返回最少以下数据.
+
+```
+{
+  "schema_version": "1.0",
+  "success": true,
+  "message": "",
+  "data": {
+    "currency": "CNY",
+    "price_unit": "per_1m_tokens",
+    "site_name": "hvoy",
+    "site_domain": "hvoy.ai",
+    "updated_at": "2026-04-22T12:00:00Z",
+    "models": [
+      {
+        "model_name": "claude-sonnet-4-6",
+        "group_name": "cc",
+        "input_price": 7.5,
+        "output_price": 37.5,
+        "cache_input_price": 0.75,
+        "cache_create_price": 9.375,
+        "cache_create_price_1h": 15,
+        "enabled": true,
+        "note": ""
+      },
+      {
+        "model_name": "gpt-5.4",
+        "group_name": "codex",
+        "input_price": 1.25,
+        "output_price": 7.5,
+        "cache_input_price": 0.125,
+        "cache_create_price": 0.5,
+        "cache_create_price_1h": null,
+        "enabled": true,
+        "note": ""
+      }
+    ]
+  }
+}
+```
