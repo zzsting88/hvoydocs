@@ -74,15 +74,11 @@
                 "group": "hvoy.ai",
                 "pages": [
                   "cn/docs/hvoyai/link",
-                  "cn/docs/hvoyai/price-api"
-                ]
-              },
-              {
-                "group": "HvoyFree",
-                "pages": [
-                  "cn/docs/hvoy-free/intro"
+                  "cn/docs/hvoyai/price-api",
+                  "cn/docs/hvoyai/rank"
                 ]
               }
+              
             ]
           }
         ]
