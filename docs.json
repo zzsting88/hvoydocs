@@ -73,6 +73,7 @@
               {
                 "group": "hvoy.ai",
                 "pages": [
+                  "cn/docs/hvoyai/verify",
                   "cn/docs/hvoyai/link",
                   "cn/docs/hvoyai/price-api",
                   "cn/docs/hvoyai/rank"
