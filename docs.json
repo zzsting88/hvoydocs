@@ -76,7 +76,8 @@
                   "cn/docs/hvoyai/verify",
                   "cn/docs/hvoyai/link",
                   "cn/docs/hvoyai/price-api",
-                  "cn/docs/hvoyai/rank"
+                  "cn/docs/hvoyai/rank",
+                  "cn/docs/hvoyai/index-rank"
                 ]
               }
               
