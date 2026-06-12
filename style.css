@@ -27,10 +27,45 @@ body,
 
 #navbar {
   min-height: 44px;
-  background: #000000;
-  border-bottom: 0;
-  color: #ffffff;
-  backdrop-filter: none;
+  background: #000000 !important;
+  border-bottom: 0 !important;
+  color: #ffffff !important;
+  backdrop-filter: none !important;
+}
+
+#navbar > div,
+body > header > div,
+header:has(#navbar) > div,
+header:has(nav-logo) > div,
+header:has(#topbar-cta-button) > div {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+body > header,
+header:has(#navbar),
+header:has(nav-logo),
+header:has(#topbar-cta-button) {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+body > header *,
+header:has(#navbar) *,
+header:has(nav-logo) *,
+header:has(#topbar-cta-button) * {
+  color: inherit !important;
+}
+
+body > header svg,
+header:has(#navbar) svg,
+header:has(nav-logo) svg,
+header:has(#topbar-cta-button) svg {
+  color: #ffffff !important;
+  stroke: currentColor !important;
 }
 
 #navbar a,
@@ -38,7 +73,7 @@ navbar-link,
 nav-anchor,
 nav-tabs-item,
 nav-dropdown-trigger {
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.88) !important;
   font-size: 12px;
   line-height: 1;
   transition: color 180ms ease, transform 180ms ease;
@@ -49,7 +84,7 @@ navbar-link:hover,
 nav-anchor:hover,
 nav-tabs-item:hover,
 nav-dropdown-trigger:hover {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 nav-logo img {
@@ -85,9 +120,9 @@ nav-logo img {
 #assistant-entry-mobile,
 #localization-select-trigger {
   border-radius: var(--tong-radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
 }
 
 #content-area {

@@ -6,7 +6,100 @@ const BASE_URL = process.env.CPM_DOCS_BASE_URL || "http://127.0.0.1:5174";
 const OUT_DIR = new URL("../assets/images/cpm/", import.meta.url);
 
 const now = "2026-06-01T10:00:00+08:00";
-const campaignRef = "cc_demoCpmGuide2026x";
+const campaignRef = "cc_cpmguide_abcdefghijklmnopqr";
+const coverageRefLbGpt55 = "cv_demoLbGpt55SearchTop";
+const coverageRefIndexGpt55 = "cv_demoIndexGpt55SearchTop";
+const coverageRefLbSonnet = "cv_demoLbSonnetSearchTop";
+
+function coverage({
+  coverageRef,
+  coverageKey,
+  bidCpmCents,
+  enabled = true,
+  archivedAt = null,
+  sortOrder = 0,
+  lastImpressionAt = "2026-06-01T09:45:00+08:00",
+  lastClickAt = "2026-06-01T09:48:00+08:00",
+}) {
+  const [source = "", modelTab = "", displayAlgo = "*", placement = "search_top"] = coverageKey.split("|");
+  return {
+    coverageRef,
+    coverageKey,
+    targetPosition: coverageKey,
+    source,
+    modelTab,
+    displayAlgo,
+    placement,
+    bidCpmCents,
+    enabled,
+    archivedAt,
+    sortOrder,
+    createdAt: "2026-05-28T15:10:00+08:00",
+    updatedAt: now,
+    deliveryAvailability: "available",
+    availabilityReason: "",
+    availabilityLabel: "",
+    lastImpressionAt,
+    lastClickAt,
+    hasPendingSettlement: false,
+  };
+}
+
+function coverageOption({
+  coverageKey,
+  minimumBidCpmCents,
+  suggestedBidCpmCents,
+  selectable = true,
+  reasonCode = "",
+  sampleCount = 18420,
+  sampleThreshold = 1000,
+}) {
+  const [source = "", modelTab = "", displayAlgo = "*", placement = "search_top"] = coverageKey.split("|");
+  return {
+    coverageKey,
+    targetPosition: coverageKey,
+    source,
+    modelTab,
+    displayAlgo,
+    placement,
+    minimumBidCpmCents,
+    floorCpmCents: minimumBidCpmCents,
+    suggestedBidCpmCents,
+    suggestedBidSource: "recent_clearing_price",
+    sampleCount,
+    sampleThreshold,
+    sampleTooSmall: sampleCount < sampleThreshold,
+    selectable,
+    reasonCode,
+  };
+}
+
+const coverageOptions = [
+  coverageOption({
+    coverageKey: "index|gpt55|*|search_top",
+    minimumBidCpmCents: 7500,
+    suggestedBidCpmCents: 8200,
+  }),
+  coverageOption({
+    coverageKey: "lb|gpt55|*|search_top",
+    minimumBidCpmCents: 8000,
+    suggestedBidCpmCents: 9000,
+  }),
+  coverageOption({
+    coverageKey: "lb|sonnet46|*|search_top",
+    minimumBidCpmCents: 8500,
+    suggestedBidCpmCents: 9500,
+    sampleCount: 9200,
+  }),
+  coverageOption({
+    coverageKey: "lball|gpt55|*|search_top",
+    minimumBidCpmCents: 8800,
+    suggestedBidCpmCents: 9600,
+    selectable: false,
+    reasonCode: "unsupported_model_tab",
+    sampleCount: 0,
+  }),
+];
 
 function partnerPro(active = true) {
   return {
@@ -42,6 +135,7 @@ const site = {
   officialSiteEstablishedAt: "2025-09-01",
   statusPageUrl: "https://status.example-relay.ai",
   partnerPro: partnerPro(true),
+  cpmBetaEnabled: true,
   detailUpdatedAt: now,
   pendingDetailChange: null,
 };
@@ -53,6 +147,8 @@ const overview = {
     username: "demo_partner",
     email: "partner@example-relay.ai",
     emailVerifiedAt: "2026-05-01T09:00:00+08:00",
+    roleKey: "partner",
+    canManageSites: true,
   },
   sites: [site],
   siteOptions: [
@@ -60,7 +156,9 @@ const overview = {
       relaySiteId: site.relaySiteId,
       siteName: site.siteName,
       siteDomain: site.siteDomain,
+      signupUrl: site.signupUrl,
       partnerPro: site.partnerPro,
+      cpmBetaEnabled: true,
     },
   ],
   adminMessages: [],
@@ -91,13 +189,31 @@ const overview = {
 
 const campaigns = [
   {
+    id: 1001,
     publicRef: campaignRef,
     relaySiteId: site.relaySiteId,
     siteName: site.siteName,
     siteDomain: site.siteDomain,
-    targetPosition: "lb|gpt55|*|pin1",
+    campaignName: "GPT-5.5 搜索顶部投放",
+    coverages: [
+      coverage({
+        coverageRef: coverageRefLbGpt55,
+        coverageKey: "lb|gpt55|*|search_top",
+        bidCpmCents: 9000,
+        sortOrder: 0,
+      }),
+      coverage({
+        coverageRef: coverageRefIndexGpt55,
+        coverageKey: "index|gpt55|*|search_top",
+        bidCpmCents: 8200,
+        sortOrder: 1,
+      }),
+    ],
+    coverageCount: 2,
+    enabledCoverageCount: 2,
+    targetPosition: "lb|gpt55|*|search_top",
     landingQueryString: "aff=demo&utm_source=hvoyai&utm_medium=cpm",
-    bidCpmCents: 7500,
+    bidCpmCents: 9000,
     budgetTotalCents: 300000,
     budgetDailyCents: 80000,
     minImpressions: 1000,
@@ -116,6 +232,33 @@ const campaigns = [
     servedImpressions: 28600,
     impressionsDelivered: 21840,
     validImpressionsDelivered: 17120,
+    stats: {
+      dateFrom: "2026-05-19",
+      dateTo: "2026-06-01",
+      viewableImpressions: 18420,
+      clicks: 856,
+      ctr: 0.0465,
+      reportSpendCents: 128400,
+      spendDays: 7,
+    },
+    budgetForecast: {
+      remainingBudgetCents: 168400,
+      averageDailySpendCents: 12300,
+      estimatedDaysRemaining: 13.7,
+      estimatedBudgetEndDateHk: "2026-06-14",
+      willExhaustWithin7Days: false,
+    },
+    dailyBudget: {
+      dateHk: "2026-06-01",
+      budgetDailyCents: 80000,
+      dailySpentCents: 35175,
+      dailyReserveMillicents: 3200000,
+      remainingDailyBudgetCents: 41625,
+    },
+    viewableImpressions: 18420,
+    clicks: 856,
+    ctr: 0.0465,
+    validClicksDelivered: 856,
     pacingMode: "even",
     pacingSkipRatio: 0.08,
     isTest: false,
@@ -123,13 +266,28 @@ const campaigns = [
     updatedAt: now,
   },
   {
-    publicRef: "cc_demoDraftPlan2026y",
+    id: 1002,
+    publicRef: "cc_draftplan_abcdefghijklmnopqr",
     relaySiteId: site.relaySiteId,
     siteName: site.siteName,
     siteDomain: site.siteDomain,
-    targetPosition: "index|sonnet|*|pin2",
+    campaignName: "Sonnet 覆盖测试计划",
+    coverages: [
+      coverage({
+        coverageRef: coverageRefLbSonnet,
+        coverageKey: "lb|sonnet46|*|search_top",
+        bidCpmCents: 9500,
+        enabled: false,
+        sortOrder: 0,
+        lastImpressionAt: null,
+        lastClickAt: null,
+      }),
+    ],
+    coverageCount: 1,
+    enabledCoverageCount: 0,
+    targetPosition: "lb|sonnet46|*|search_top",
     landingQueryString: "aff=sonnet",
-    bidCpmCents: 6000,
+    bidCpmCents: 9500,
     budgetTotalCents: 120000,
     budgetDailyCents: null,
     minImpressions: 1000,
@@ -148,6 +306,33 @@ const campaigns = [
     servedImpressions: 0,
     impressionsDelivered: 0,
     validImpressionsDelivered: 0,
+    stats: {
+      dateFrom: "2026-05-19",
+      dateTo: "2026-06-01",
+      viewableImpressions: 0,
+      clicks: 0,
+      ctr: 0,
+      reportSpendCents: 0,
+      spendDays: 0,
+    },
+    budgetForecast: {
+      remainingBudgetCents: 120000,
+      averageDailySpendCents: 0,
+      estimatedDaysRemaining: null,
+      estimatedBudgetEndDateHk: "",
+      willExhaustWithin7Days: false,
+    },
+    dailyBudget: {
+      dateHk: "2026-06-01",
+      budgetDailyCents: null,
+      dailySpentCents: 0,
+      dailyReserveMillicents: 0,
+      remainingDailyBudgetCents: null,
+    },
+    viewableImpressions: 0,
+    clicks: 0,
+    ctr: 0,
+    validClicksDelivered: 0,
     pacingMode: "even",
     pacingSkipRatio: 0,
     isTest: true,
@@ -206,8 +391,8 @@ const cpmReport = {
       source: "lb",
       modelTab: "gpt55",
       displayAlgo: "*",
-      position: "pin1",
-      positionKey: "lb|gpt55|*|pin1",
+      position: "search_top",
+      positionKey: "lb|gpt55|*|search_top",
       auctions: 22640,
       impressions: 21840,
       viewableImpressions: 18420,
@@ -226,8 +411,8 @@ const cpmReport = {
       source: "lb",
       modelTab: "gpt55",
       displayAlgo: "*",
-      position: "pin1",
-      positionKey: "lb|gpt55|*|pin1",
+      position: "search_top",
+      positionKey: "lb|gpt55|*|search_top",
       auctions: 22640,
       impressions: 21840,
       viewableImpressions: 18420,
@@ -239,6 +424,68 @@ const cpmReport = {
       ctr: 0.05,
       viewableRate: 0.843,
       avgCpmCents: 7500,
+    },
+  ],
+  coverageBreakdown: [
+    {
+      campaignCoverageId: 501,
+      campaignId: 1001,
+      coverageRef: coverageRefLbGpt55,
+      coverageKey: "lb|gpt55|*|search_top",
+      targetPosition: "lb|gpt55|*|search_top",
+      source: "lb",
+      modelTab: "gpt55",
+      displayAlgo: "*",
+      placement: "search_top",
+      bidCpmCents: 9000,
+      enabled: true,
+      archivedAt: null,
+      auctions: 22640,
+      impressions: 21840,
+      viewableImpressions: 18420,
+      billableImpressions: 17120,
+      refundedImpressions: 18,
+      clicks: 856,
+      spentCents: 128400,
+      refundedCents: 135,
+      ctr: 0.0465,
+      viewableRate: 0.843,
+      avgCpmCents: 7500,
+      currentReasonCode: "",
+      exclusionCount: 0,
+      topExclusionReason: "",
+      topExclusionCount: 0,
+      delayedSettlementReasonCode: "",
+    },
+    {
+      campaignCoverageId: 502,
+      campaignId: 1001,
+      coverageRef: coverageRefIndexGpt55,
+      coverageKey: "index|gpt55|*|search_top",
+      targetPosition: "index|gpt55|*|search_top",
+      source: "index",
+      modelTab: "gpt55",
+      displayAlgo: "*",
+      placement: "search_top",
+      bidCpmCents: 8200,
+      enabled: true,
+      archivedAt: null,
+      auctions: 0,
+      impressions: 0,
+      viewableImpressions: 0,
+      billableImpressions: 0,
+      refundedImpressions: 0,
+      clicks: 0,
+      spentCents: 0,
+      refundedCents: 0,
+      ctr: 0,
+      viewableRate: 0,
+      avgCpmCents: 0,
+      currentReasonCode: "no_eligible_inventory",
+      exclusionCount: 42,
+      topExclusionReason: "no_eligible_inventory",
+      topExclusionCount: 42,
+      delayedSettlementReasonCode: "",
     },
   ],
   datePositionBreakdown: [],
@@ -280,6 +527,82 @@ const cpmReport = {
     status: "ok",
     issueKeys: [],
   },
+  coveragePriceDistribution: [
+    {
+      campaignCoverageId: 501,
+      campaignId: 1001,
+      coverageRef: coverageRefLbGpt55,
+      coverageKey: "lb|gpt55|*|search_top",
+      targetPosition: "lb|gpt55|*|search_top",
+      source: "lb",
+      modelTab: "gpt55",
+      displayAlgo: "*",
+      placement: "search_top",
+      bidCpmCents: 9000,
+      enabled: true,
+      archivedAt: null,
+      sortOrder: 0,
+      createdAt: "2026-05-28T15:10:00+08:00",
+      updatedAt: now,
+      truncated: false,
+      summary: {
+        auctions: 22640,
+        avgEffectiveCpmCents: 7500,
+        p50EffectiveCpmCents: 7200,
+        p90EffectiveCpmCents: 8600,
+        minEffectiveCpmCents: 6000,
+        maxEffectiveCpmCents: 9800,
+        basePriceWins: 9200,
+        secondPriceWins: 13440,
+        overrideWins: 0,
+        basePriceWinRate: 0.406,
+        secondPriceWinRate: 0.594,
+        overrideWinRate: 0,
+        avgWinningBidCpmCents: 9000,
+        avgSecondBidCpmCents: 7100,
+      },
+      buckets: [
+        { key: "60-75", label: "¥60-75", minCpmCents: 6000, maxCpmCents: 7500, auctions: 7300, rate: 0.322 },
+        { key: "75-90", label: "¥75-90", minCpmCents: 7500, maxCpmCents: 9000, auctions: 10400, rate: 0.459 },
+        { key: "gt90", label: "> ¥90", minCpmCents: 9000, maxCpmCents: null, auctions: 2540, rate: 0.112 },
+      ],
+    },
+    {
+      campaignCoverageId: 502,
+      campaignId: 1001,
+      coverageRef: coverageRefIndexGpt55,
+      coverageKey: "index|gpt55|*|search_top",
+      targetPosition: "index|gpt55|*|search_top",
+      source: "index",
+      modelTab: "gpt55",
+      displayAlgo: "*",
+      placement: "search_top",
+      bidCpmCents: 8200,
+      enabled: true,
+      archivedAt: null,
+      sortOrder: 1,
+      createdAt: "2026-05-28T15:10:00+08:00",
+      updatedAt: now,
+      truncated: false,
+      summary: {
+        auctions: 0,
+        avgEffectiveCpmCents: 0,
+        p50EffectiveCpmCents: 0,
+        p90EffectiveCpmCents: 0,
+        minEffectiveCpmCents: 0,
+        maxEffectiveCpmCents: 0,
+        basePriceWins: 0,
+        secondPriceWins: 0,
+        overrideWins: 0,
+        basePriceWinRate: 0,
+        secondPriceWinRate: 0,
+        overrideWinRate: 0,
+        avgWinningBidCpmCents: 0,
+        avgSecondBidCpmCents: 0,
+      },
+      buckets: [],
+    },
+  ],
 };
 
 const walletPayload = {
@@ -465,9 +788,9 @@ const adminReport = {
 
 const basePrices = {
   basePrices: [
-    { positionKey: "lb|gpt55|*|pin1", baseCpmCents: 7500, matchPriority: 4, enabled: true, notes: "GPT-5.5 榜单 pin1" },
-    { positionKey: "lb|*|*|pin2", baseCpmCents: 5000, matchPriority: 2, enabled: true, notes: "榜单通用 pin2" },
-    { positionKey: "index|sonnet|*|pin1", baseCpmCents: 6000, matchPriority: 4, enabled: true, notes: "首页 Sonnet" },
+    { positionKey: "lb|gpt55|*|search_top", baseCpmCents: 8000, matchPriority: 4, enabled: true, notes: "GPT-5.5 榜单搜索顶部" },
+    { positionKey: "index|gpt55|*|search_top", baseCpmCents: 7500, matchPriority: 4, enabled: true, notes: "GPT-5.5 首页搜索顶部" },
+    { positionKey: "lb|sonnet46|*|search_top", baseCpmCents: 8500, matchPriority: 4, enabled: true, notes: "Sonnet 4.6 搜索顶部" },
   ],
 };
 
@@ -475,11 +798,11 @@ const basePriceRecommendations = {
   ok: true,
   recommendations: [
     {
-      positionKey: "lb|gpt55|*|pin1",
+      positionKey: "lb|gpt55|*|search_top",
       source: "lb",
       modelTab: "gpt55",
       displayAlgo: "*",
-      position: "pin1",
+      position: "search_top",
       rankPosition: 1,
       dateFrom: "2026-05-29",
       dateTo: "2026-06-01",
@@ -490,10 +813,10 @@ const basePriceRecommendations = {
       ctr: 0.0465,
       clickValueCents: 150,
       recommendedBaseCpmCents: 6975,
-      currentBaseCpmCents: 7500,
+      currentBaseCpmCents: 8000,
       currentMatchPriority: 4,
       currentEnabled: true,
-      currentNotes: "GPT-5.5 榜单 pin1",
+      currentNotes: "GPT-5.5 榜单搜索顶部",
       sampleTooSmall: false,
     },
   ],
@@ -503,8 +826,11 @@ const pinOverrides = {
   overrides: [
     {
       id: 5,
-      positionKey: "lb|gpt55|*|pin1",
+      positionKey: "lb|gpt55|*|search_top",
       campaignId: 1001,
+      campaignCoverageId: 501,
+      coverageRef: coverageRefLbGpt55,
+      coverageKey: "lb|gpt55|*|search_top",
       partnerUserId: 1,
       partnerUsername: "demo_partner",
       siteName: site.siteName,
@@ -521,7 +847,7 @@ const pinOverrides = {
 const operations = {
   ok: true,
   status: {
-    settings: { enabled: true, previewEnabled: true, allowedPositionKeys: ["lb|*|*|pin1", "index|*|*|pin1"] },
+    settings: { enabled: true, previewEnabled: true, allowedPositionKeys: ["lb|*|*|search_top", "index|*|*|search_top"] },
     runtime: {
       hardDisabled: false,
       candidatePoolEnabled: true,
@@ -548,7 +874,7 @@ const operations = {
         healthy: true,
         checkedAt: now,
         entries: [
-          { key: "lb|gpt55|*|pin1", cached: true, healthy: true, rowCount: 2, refreshedAt: now, expiresAt: "2026-06-01T10:00:30+08:00", hits: 1860, misses: 8, refreshes: 21 },
+          { key: "lb|gpt55|*|search_top", cached: true, healthy: true, rowCount: 2, refreshedAt: now, expiresAt: "2026-06-01T10:00:30+08:00", hits: 1860, misses: 8, refreshes: 21 },
         ],
       },
       freqCapSource: "redis",
@@ -591,9 +917,9 @@ const operationEvents = {
       actionKey: "bid_update",
       actorType: "partner",
       actorId: 1,
-      before: { bidCpmCents: 7000 },
-      after: { bidCpmCents: 7500 },
-      note: "partner_dashboard_bid_update",
+      before: { coverageKey: "lb|gpt55|*|search_top", bidCpmCents: 8500 },
+      after: { coverageKey: "lb|gpt55|*|search_top", bidCpmCents: 9000 },
+      note: "coverage_bid_update",
       visibleToPartner: true,
     },
     {
@@ -623,27 +949,80 @@ async function fulfillJson(route, payload) {
 }
 
 async function installRoutes(page) {
+  await page.route("**/__free-token/session", (route) => fulfillJson(route, {
+    authenticated: true,
+    user: { id: 1, username: "demo_partner", roleKey: "partner", canManageSites: true },
+  }));
   await page.route("**/__partner/session", (route) => fulfillJson(route, overview));
   await page.route("**/__partner/overview", (route) => fulfillJson(route, overview));
   await page.route("**/__partner/wallet?**", (route) => fulfillJson(route, walletPayload));
   await page.route("**/__partner/wallet/recharge/orders?**", (route) => fulfillJson(route, rechargeOrders));
-  await page.route("**/__partner/cpm/campaigns?**", (route) => fulfillJson(route, { ok: true, campaigns, items: campaigns }));
-  await page.route("**/__partner/cpm/campaigns", (route) => fulfillJson(route, { ok: true, campaigns, items: campaigns }));
+  await page.route(/\/__partner\/cpm\/campaigns(?:\?.*)?$/, (route) => fulfillJson(route, {
+    ok: true,
+    campaigns,
+    items: campaigns,
+    pagination: { page: 1, pageSize: 20, total: campaigns.length, totalPages: 1 },
+  }));
+  await page.route("**/__partner/cpm/coverage-options?**", (route) => fulfillJson(route, { ok: true, items: coverageOptions }));
   await page.route(`**/__partner/cpm/campaigns/${campaignRef}`, (route) => fulfillJson(route, { ok: true, campaign: campaigns[0] }));
-  await page.route(`**/__partner/cpm/campaigns/${campaignRef}/report?**`, (route) => fulfillJson(route, { ok: true, report: cpmReport }));
+  await page.route(`**/__partner/cpm/campaigns/${campaignRef}/coverages`, (route) => fulfillJson(route, { ok: true, coverages: campaigns[0].coverages, items: campaigns[0].coverages }));
+  await page.route(/\/__partner\/cpm\/campaigns\/cc_[A-Za-z0-9_-]+\/report(?:\?.*)?$/, (route) => {
+    const url = new URL(route.request().url());
+    const ref = decodeURIComponent(url.pathname.split("/").slice(-2, -1)[0] || "");
+    if (ref === campaignRef) return fulfillJson(route, { ok: true, report: cpmReport });
+    return fulfillJson(route, {
+      ok: true,
+      report: {
+        dateFrom: "2026-05-19",
+        dateTo: "2026-06-01",
+        summary: { viewableImpressions: 0, billableImpressions: 0, clicks: 0, spentCents: 0, ctr: 0 },
+        budgetForecast: {},
+        dailyBudget: {},
+        daily: [],
+        positionBreakdown: [],
+        modelBreakdown: [],
+        coverageBreakdown: [],
+        datePositionBreakdown: [],
+        auctionPriceDistribution: { summary: {}, buckets: [] },
+        coveragePriceDistribution: [],
+        invoiceCoverage: {},
+      },
+    });
+  });
   await page.route(`**/__partner/cpm/campaigns/${campaignRef}/bid-history?**`, (route) => fulfillJson(route, {
     ok: true,
     history: [
-      { id: 1, createdAt: "2026-06-01T09:50:00+08:00", oldBidCents: 7000, newBidCents: 7500, changedByType: "partner", note: "partner_dashboard_bid_update" },
+      {
+        id: 1,
+        createdAt: "2026-06-01T09:50:00+08:00",
+        campaignCoverageId: 501,
+        coverageRef: coverageRefLbGpt55,
+        coverageKey: "lb|gpt55|*|search_top",
+        oldBidCents: 8500,
+        newBidCents: 9000,
+        changedByType: "partner",
+        note: "coverage_bid_update",
+      },
     ],
   }));
   await page.route(`**/__partner/cpm/campaigns/${campaignRef}/events?**`, (route) => fulfillJson(route, operationEvents));
-  await page.route("**/__partner/cpm/minimum-bid?**", (route) => fulfillJson(route, { ok: true, minimumBidCpmCents: 7500, targetPosition: "lb|gpt55|*|pin1" }));
+  await page.route("**/__partner/cpm/minimum-bid?**", (route) => {
+    const url = new URL(route.request().url());
+    const targetPosition = url.searchParams.get("targetPosition") || url.searchParams.get("coverageKey") || "lb|gpt55|*|search_top";
+    const option = coverageOptions.find((item) => item.coverageKey === targetPosition) || coverageOptions[1];
+    return fulfillJson(route, {
+      ok: true,
+      targetPosition: option.coverageKey,
+      minimumBidCpmCents: option.minimumBidCpmCents,
+      suggestedBidCpmCents: option.suggestedBidCpmCents,
+    });
+  });
   await page.route("**/__all-channels", (route) => fulfillJson(route, allChannels));
   await page.route("**/__admin/session", (route) => fulfillJson(route, { authenticated: true, user: { username: "admin", roleKey: "admin" } }));
   await page.route("**/__admin/cpm/campaigns?**", (route) => fulfillJson(route, adminCampaigns));
   await page.route("**/__admin/cpm/reports?**", (route) => fulfillJson(route, { ok: true, ...adminReport }));
-  await page.route("**/__admin/cpm/settings", (route) => fulfillJson(route, { enabled: true, previewEnabled: true, allowedPositionKeys: ["lb|*|*|pin1", "index|*|*|pin1"] }));
+  await page.route("**/__admin/cpm/coverage-options?**", (route) => fulfillJson(route, { ok: true, items: coverageOptions }));
+  await page.route("**/__admin/cpm/settings", (route) => fulfillJson(route, { enabled: true, previewEnabled: true, allowedPositionKeys: ["lb|*|*|search_top", "index|*|*|search_top"] }));
   await page.route("**/__admin/cpm/operations", (route) => fulfillJson(route, operations));
   await page.route("**/__admin/cpm/base-prices?**", (route) => fulfillJson(route, basePrices));
   await page.route("**/__admin/cpm/base-price-recommendations?**", (route) => fulfillJson(route, basePriceRecommendations));
@@ -653,8 +1032,10 @@ async function installRoutes(page) {
 
 async function screenshot(page, url, filename, options = {}) {
   await page.goto(`${BASE_URL}${url}`, { waitUntil: "networkidle" });
+  await page.waitForTimeout(options.waitMs ?? 600);
   if (options.scrollY) {
     await page.evaluate((y) => window.scrollTo(0, y), options.scrollY);
+    await page.waitForTimeout(200);
   }
   await page.screenshot({
     path: path.join(OUT_DIR.pathname, filename),
