@@ -1,17 +1,17 @@
 ---
-title: "HvoyFree 介绍"
+title: "hvoyFree 介绍"
 sidebarTitle: "产品介绍"
 description: "每月多用 13 亿 Token"
 mode: wide
 ---
 
-## 什么是 HvoyFree
+## 什么是 hvoyFree
 
 每家 AI 实验室都提供免费额度, 单独拿一家的免费额度只能当玩具
 
 但如果把十几家叠在一起，就能拼出大约 **每月 13 亿 Token** 的token.
 
-HvoyFree 把这些全部收集到一个地方, 把你客户端指向聚合的地址, 你可以轻松的使用这些免费API, 够日常简单使用.
+hvoyFree 把这些全部收集到一个地方, 把您客户端指向聚合的地址, 您可以轻松的使用这些免费API, 够日常简单使用.
 
 这些API都只在本地存储,没有任何安全隐患.
 
@@ -35,14 +35,14 @@ HvoyFree 把这些全部收集到一个地方, 把你客户端指向聚合的地
 
 ## 快速开始
 1. 在上面支持的供应商列表里, 拿到免费的API key
-2. 下载并打开HvoyApp
+2. 下载并打开hvoyApp
 3. ![添加API key](/assets/images/hvoyFree1.jpg)
 4. 可以在这里设置调用顺序![调用顺序](/assets/images/hvoyFree2.jpg)
 
 
 ## 使用示例
 
-如果你想要使用这些apikey
+如果您想要使用这些apikey
 
 只需将 `base_url` http://localhost:4321/v1 即可.
 
@@ -57,7 +57,7 @@ client = OpenAI(
 
 resp = client.chat.completions.create(
     model="auto",
-    messages=[{"role": "user", "content": "你好"}],
+    messages=[{"role": "user", "content": "您好"}],
 )
 print(resp.choices[0].message.content)
 ```
@@ -68,7 +68,7 @@ curl http://localhost:4321/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
     "model": "auto",
-    "messages": [{"role": "user", "content": "你好"}]
+    "messages": [{"role": "user", "content": "您好"}]
   }'
 ```
 
@@ -85,12 +85,12 @@ for chunk in stream:
 
 `model` 设为 `"auto"` 时路由器自动选择最优模型，也可以指定具体模型如 `"gemini-2.5-flash"`。
 
-每个响应会携带 `X-Routed-Via` Header 告诉你实际是哪个提供商/模型处理了请求。
+每个响应会携带 `X-Routed-Via` Header 告诉您实际是哪个提供商/模型处理了请求。
 
 ## 注意事项
 
 <Warning>
-免费额度可能随时变化，没有 SLA 保障。这个只供你平时尝鲜, 如果你要做正式产品，请使用付费 API。
+免费额度可能随时变化，没有 SLA 保障。这个只供您平时尝鲜, 如果您要做正式产品，请使用付费 API。
 </Warning>
 
 - 没有最顶级模型
@@ -99,4 +99,9 @@ for chunk in stream:
 
 ## 开源协议
 
-HvoyFree 基于https://github.com/tashfeenahmed/freellmapi 做了小改动.
+hvoyFree 基于https://github.com/tashfeenahmed/freellmapi 做了小改动.
+
+<div className="doc-support-footer">
+  <span>还有疑问？</span>
+  <a href="/cn/docs/get-started/help">获取支持</a>
+</div>

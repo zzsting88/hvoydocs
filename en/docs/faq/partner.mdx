@@ -1,0 +1,83 @@
+---
+title: "Partner FAQ"
+sidebarTitle: "Partner FAQ"
+mode: wide
+---
+
+<div className="faq-list">
+  <div className="faq-item">
+    <div className="faq-question">
+      <span>Q</span>
+      <div>How can my site provide price data?</div>
+    </div>
+    <div className="faq-answer">
+      <span>A</span>
+      <div>
+        <p>Partner sites allow hvoy to fetch and display model prices by default. If your site does not allow price fetching, please contact us so we can disable it.</p>
+        <p>hvoy already supports price fetching for newapi and some sub2api-based sites. For sites that are not currently supported, please implement a price interface according to the specification below, then submit the interface URL to us through a partner dashboard ticket. We will process it after receiving your request.</p>
+        <p>Development specification: <a href="https://hvoy.ai/docs/provider-price-api">https://hvoy.ai/docs/provider-price-api</a></p>
+        <p>Self-test link: <a href="https://hvoy.ai/docs/provider-price-api-fetch">https://hvoy.ai/docs/provider-price-api-fetch</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div className="faq-item">
+    <div className="faq-question">
+      <span>Q</span>
+      <div>Can I buy a fixed leaderboard position?</div>
+    </div>
+    <div className="faq-answer">
+      <span>A</span>
+      <div>
+        <p>No. hvoy leaderboard ranking is calculated dynamically from availability, price, latency, quality, verification, and user behavior. A site earns better organic visibility by improving stability, transparency, and service quality.</p>
+        <a className="faq-link" href="/en/docs/hvoyai/rank">Learn about ranking logic</a>
+      </div>
+    </div>
+  </div>
+
+  <div className="faq-item">
+    <div className="faq-question">
+      <span>Q</span>
+      <div>Does Partner Pro or verification guarantee a top rank?</div>
+    </div>
+    <div className="faq-answer">
+      <span>A</span>
+      <div>
+        <p>No. Verification and Partner Pro can be part of trust and visibility signals, but they do not override baseline quality requirements. Sites still need stable availability, reasonable pricing, acceptable latency, and ongoing successful probes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div className="faq-item">
+    <div className="faq-question">
+      <span>Q</span>
+      <div>How are homepage recommendations generated?</div>
+    </div>
+    <div className="faq-answer">
+      <span>A</span>
+      <div>
+        <p>Homepage recommendations currently come mainly from top results in the hvoy leaderboard. See the homepage recommendation logic for details.</p>
+        <a className="faq-link" href="/en/docs/hvoyai/index-rank">View homepage recommendation logic</a>
+      </div>
+    </div>
+  </div>
+
+  <div className="faq-item">
+    <div className="faq-question">
+      <span>Q</span>
+      <div>Why did my site disappear from the leaderboard after being listed?</div>
+    </div>
+    <div className="faq-answer">
+      <span>A</span>
+      <div>
+        <p>The hvoy leaderboard is based on real-time probing and a comprehensive score, not the result of a single probe. When a channel model is unstable or has issues, hvoy may judge the quality as below standard, and your site will not be shown on the leaderboard.</p>
+        <p>If the channel model returns to normal, it will usually recover automatically after running stably for 24 hours. Please monitor channel model quality during daily operations to protect user experience and avoid dropping from the leaderboard. hvoy shows recent probe results in the partner dashboard to help you monitor model stability.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="doc-support-footer">
+  <span>Still have questions?</span>
+  <a href="/en/docs/get-started/help">Get support</a>
+</div>

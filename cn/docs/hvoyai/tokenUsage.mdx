@@ -28,13 +28,13 @@ API Key 等同于账号密码。不要把完整 API Key 发到群里、Issue、�
 
 ## 先判断 Token 来源
 
-如果你是在 hvoy 顶部菜单进入的, 一般都在 **免费 Token** 菜单下面:
+如果您是在 hvoy 顶部菜单进入的, 一般都在 **免费 Token** 菜单下面:
 
 ![hvoy 免费 Token 入口](/assets/images/token-usage/hvoy-lottery-annotated.png)
 
 ## 抽奖 Token 用在 Codex
 
-如果你的 Token 是从 [hvoy 免费抽奖](https://hvoy.ai/free-tokens/lottery)得到的, 一般可以直接给 Codex 使用。
+如果您的 Token 是从 [hvoy 免费抽奖](https://hvoy.ai/free-tokens/lottery)得到的, 一般可以直接给 Codex 使用。
 
 ### 找到 API URL 和 API Key
 
@@ -43,7 +43,7 @@ API Key 等同于账号密码。不要把完整 API Key 发到群里、Issue、�
 3. 点击某一次中奖记录的 **查看详情**, 例如 `https://hvoy.ai/free-tokens/lottery/mine/2026-06-11-1400` 这种详情页。
 4. 在详情页复制 **API URL** 和 **API Key**。
 
-中奖详情页属于个人页面, 会显示你的真实 API Key。本文档不放真实页面截图, 避免误把 Key 泄露出去。
+中奖详情页属于个人页面, 会显示您的真实 API Key。本文档不放真实页面截图, 避免误把 Key 泄露出去。
 
 ![我的抽奖记录示意](/assets/images/token-usage/zhongjiangjilu.jpg)
 
@@ -52,7 +52,7 @@ API Key 等同于账号密码。不要把完整 API Key 发到群里、Issue、�
 
 
 ## 测试API Key是否可用
-Hvoy.ai会每5分钟检查一次APIKey是否可用, 所以一般情况下, 这些API Key都是可以使用的.
+hvoy.ai会每5分钟检查一次APIKey是否可用, 所以一般情况下, 这些API Key都是可以使用的.
 
 如果您觉得API Key不可用, 可以用[这个页面](https://hvoy.ai/api-key-tester)来进行测试
 
@@ -63,7 +63,7 @@ Hvoy.ai会每5分钟检查一次APIKey是否可用, 所以一般情况下, 这�
 
 ## 免费 API Key 用 CCSwitch 接入
 
-如果你的 Token 来自 [免费 API key](https://hvoy.ai/free-tokens/api-keys)栏目, 一般建议先用 CCSwitch 管理, 再由 CCSwitch 接入 Codex 或 Claude Code。
+如果您的 Token 来自 [免费 API key](https://hvoy.ai/free-tokens/api-keys)栏目, 一般建议先用 CCSwitch 管理, 再由 CCSwitch 接入 Codex 或 Claude Code。
 
 在这个页面里, 每一行都会显示 API URL、API Key、模型和领取按钮。先领取, 再复制 API URL 和 API Key。
 
@@ -105,7 +105,7 @@ brew install --cask cc-switch
 
 ![CCSwitch 关键字段填写示意](/assets/images/token-usage/ccswitch-fields-demo.png)
 
-Codex 切换供应商后通常需要重启终端或重新打开 Codex。Claude Code 在 CCSwitch 文档中说明为支持热切换, 但如果你遇到不生效, 也建议先关闭再重新打开。
+Codex 切换供应商后通常需要重启终端或重新打开 Codex。Claude Code 在 CCSwitch 文档中说明为支持热切换, 但如果您遇到不生效, 也建议先关闭再重新打开。
 
 ### Codex 需要本地路由时
 
@@ -128,7 +128,7 @@ CCSwitch 官方文档对这部分有更完整说明:
 
 ### 写入 Codex 配置
 
-如果你不用 CCSwitch, 可以直接把抽奖页给出的 API URL 和 API Key 写入 Codex 配置。
+如果您不用 CCSwitch, 可以直接把抽奖页给出的 API URL 和 API Key 写入 Codex 配置。
 
 ![Codex 配置字段示意](/assets/images/token-usage/codex-config-demo.png)
 
@@ -136,7 +136,7 @@ CCSwitch 官方文档对这部分有更完整说明:
 
 ```json
 {
-  "OPENAI_API_KEY": "这里粘贴你的 API Key"
+  "OPENAI_API_KEY": "这里粘贴您的 API Key"
 }
 ```
 
@@ -149,7 +149,7 @@ model_reasoning_effort = "high"
 disable_response_storage = true
 
 [model_providers.hvoy]
-name = "Hvoy"
+name = "hvoy"
 base_url = "这里粘贴页面显示的 API URL"
 wire_api = "responses"
 requires_openai_auth = true
@@ -164,7 +164,7 @@ codex
 进入 Codex 后可以先问一句简单问题测试:
 
 ```text
-你好, 请用一句话说明你现在是否可以正常工作
+您好, 请用一句话说明您现在是否可以正常工作
 ```
 
 <Warning>
@@ -173,7 +173,7 @@ API URL 以中奖详情页显示为准。不要随意删掉或追加 `/v1`、`/r
 
 ## 小米 MiMo Token
 
-如果你的免费 Token 是小米 MiMo 的分享 Token, 不要直接套用普通 OpenAI 或 Anthropic 配置。请优先看小米官方工具接入文档:
+如果您的免费 Token 是小米 MiMo 的分享 Token, 不要直接套用普通 OpenAI 或 Anthropic 配置。请优先看小米官方工具接入文档:
 
 ![小米 MiMo 工具接入页面](/assets/images/token-usage/xiaomi-tools-annotated.png)
 
@@ -181,7 +181,7 @@ API URL 以中奖详情页显示为准。不要随意删掉或追加 `/v1`、`/r
 - [小米 MiMo 静态文档: Overview of AI Tools](https://platform.xiaomimimo.com/static/docs/integration/tools-overview.md)
 - [小米 MiMo Claude Code 配置](https://platform.xiaomimimo.com/static/docs/integration/claudecode.md)
 
-如果你通过 CCSwitch 使用小米 MiMo, 可以在 CCSwitch 里选择 **Xiaomi MiMo** 或 **MiMo Token Plan** 相关预设; 预设列表以你安装的 CCSwitch 版本为准。
+如果您通过 CCSwitch 使用小米 MiMo, 可以在 CCSwitch 里选择 **Xiaomi MiMo** 或 **MiMo Token Plan** 相关预设; 预设列表以您安装的 CCSwitch 版本为准。
 
 ## 常见问题
 
@@ -212,7 +212,7 @@ Codex 通常在启动时读取配置。切换供应商或修改 `~/.codex/config
 
 ### 要不要把抽奖 Token 也放进 CCSwitch
 
-可以。如果你希望统一管理多个 Codex/Claude Code 供应商, 抽奖 Token 也可以作为 Codex 自定义供应商添加到 CCSwitch。只是抽奖 Token 本身通常可以直接给 Codex 用, 不一定必须经过 CCSwitch。
+可以。如果您希望统一管理多个 Codex/Claude Code 供应商, 抽奖 Token 也可以作为 Codex 自定义供应商添加到 CCSwitch。只是抽奖 Token 本身通常可以直接给 Codex 用, 不一定必须经过 CCSwitch。
 
 ## 外部链接
 
@@ -223,3 +223,8 @@ Codex 通常在启动时读取配置。切换供应商或修改 `~/.codex/config
 - [CCSwitch GitHub Releases](https://github.com/farion1231/cc-switch/releases)
 - [CCSwitch 用户手册](https://github.com/farion1231/cc-switch/blob/main/docs/user-manual/zh/README.md)
 - [小米 MiMo 工具接入总览](https://platform.xiaomimimo.com/docs/zh-CN/integration/tools-overview)
+
+<div className="doc-support-footer">
+  <span>还有疑问？</span>
+  <a href="/cn/docs/get-started/help">获取支持</a>
+</div>

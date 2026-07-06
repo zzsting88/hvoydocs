@@ -1,0 +1,83 @@
+---
+title: "Free Token Usage Guide"
+sidebarTitle: "Free Token Usage"
+description: "How to use Tokens from hvoy free lotteries or free API Key pages with Codex, Claude Code, and CCSwitch"
+mode: wide
+---
+
+Start by checking where your free Token came from.
+
+| Token source | Recommended usage |
+| --- | --- |
+| Token won from [Free Lottery](https://hvoy.ai/free-tokens/lottery) | Import it into CCSwitch first, then connect it to Codex |
+| Token claimed from [Free API Keys](https://hvoy.ai/free-tokens/api-keys) | Manage it in CCSwitch, then connect it to Codex or Claude Code |
+| Xiaomi MiMo shared Token | Follow Xiaomi's official integration documentation first |
+
+<Warning>
+An API Key is equivalent to account credentials. Do not post the full key in groups, issues, screenshots, or public documents. Mask the middle part before sharing screenshots.
+</Warning>
+
+## Find the Token Information
+
+If the Token comes from hvoy's top menu, it is usually under the **Free Token** menu.
+
+For lottery Tokens:
+
+1. Open [Free Lottery](https://hvoy.ai/free-tokens/lottery) and sign in.
+2. Go to your lottery records.
+3. Open a winning record detail page.
+4. Copy the **API URL** and **API Key**.
+
+The detail page is personal and may show your real API Key, so this documentation does not include a real screenshot of that page.
+
+## Use CCSwitch
+
+CCSwitch is a local desktop tool for managing providers for Claude Code, Codex, Gemini CLI, OpenCode, OpenClaw, Hermes, and similar tools.
+
+Basic flow:
+
+1. Copy the API URL and API Key from hvoy.
+2. Open CCSwitch.
+3. Select the app you want to connect, such as **Codex** or **Claude Code**.
+4. Add a provider from the top-right `+` button.
+5. Use a preset if one exists; otherwise create a custom provider.
+6. Fill in the API URL, API Key, and model name.
+7. Add the provider, then enable it.
+
+Codex usually needs a terminal restart or app restart after switching providers. If Claude Code hot switching does not take effect, close and reopen it as well.
+
+## Direct Codex Configuration
+
+If you do not use CCSwitch, you can write the API URL and API Key directly into Codex configuration.
+
+`~/.codex/auth.json`:
+
+```json
+{
+  "OPENAI_API_KEY": "paste your API Key here"
+}
+```
+
+`~/.codex/config.toml`:
+
+```toml
+model = "your-model-name"
+
+[model_providers.custom]
+name = "custom"
+base_url = "paste your API URL here"
+wire_api = "chat"
+```
+
+Then restart Codex and run a small test prompt.
+
+## External Links
+
+- [hvoy free lottery](https://hvoy.ai/free-tokens/lottery)
+- [hvoy free API Keys](https://hvoy.ai/free-tokens/api-keys)
+- [CCSwitch documentation](https://github.com/farion1231/cc-switch)
+
+<div className="doc-support-footer">
+  <span>Still have questions?</span>
+  <a href="/en/docs/get-started/help">Get support</a>
+</div>

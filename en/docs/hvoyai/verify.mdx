@@ -1,0 +1,25 @@
+---
+title: "Dedicated Verification Links"
+sidebarTitle: "Dedicated Verification Links"
+mode: wide
+---
+
+hvoy currently does not provide a public API for external test calls, but it provides a quick way to prefill the test page through URL parameters.
+
+Example:
+
+```text
+https://hvoy.ai/?api=baidu.com&model=opus48&note=cc%E5%88%86%E7%BB%84&modelid=claude-opus-4-6
+```
+
+- `api` decides which site URL is filled by default.
+- `model` can be values such as `opus46`, `sonnet46`, `gemini31`, `opus47`, `opus48`, `gpt54`, or dotted forms such as `opus4.6`, `sonnet4.6`, `gemini3.1`, `opus4.7`.
+- `modelid` is usually optional. Use it when a relay site's model ID differs from hvoy's common model name, for example `[official]claude-sonnet-4-6`.
+- `note` is an optional remark, usually used for group names.
+
+![verifyUrl](/assets/images/verifyUrl.jpg)
+
+<div className="doc-support-footer">
+  <span>Still have questions?</span>
+  <a href="/en/docs/get-started/help">Get support</a>
+</div>

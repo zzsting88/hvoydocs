@@ -3,14 +3,14 @@
   "theme": "mint",
   "name": "Hvoy Docs",
   "colors": {
-    "primary": "#0066CC",
-    "light": "#2997FF",
-    "dark": "#0066CC"
+    "primary": "#00C759",
+    "light": "#34D976",
+    "dark": "#00A84A"
   },
   "favicon": "/assets/logo/favicon.png",
   "logo": {
-    "light": "/assets/logo/favicon.png",
-    "dark": "/assets/logo/favicon.png",
+    "light": "/assets/logo/hvoy-wordmark.svg",
+    "dark": "/assets/logo/hvoy-wordmark.svg",
     "href": "https://hvoy.ai"
   },
   "appearance": {
@@ -41,9 +41,90 @@
     }
   },
   "footer": {
+    "links": [
+      {
+        "header": "产品",
+        "items": [
+          {
+            "label": "模型榜单",
+            "href": "https://hvoy.ai/leaderboard"
+          },
+          {
+            "label": "站点信息",
+            "href": "https://hvoy.ai/"
+          },
+          {
+            "label": "免费Token",
+            "href": "https://hvoy.ai/free-tokens/lottery"
+          },
+          {
+            "label": "福利中心",
+            "href": "https://hvoy.ai/free-tokens/lottery"
+          },
+          {
+            "label": "邀请好友",
+            "href": "https://hvoy.ai/free-tokens/invite-codes"
+          },
+          {
+            "label": "模型择优",
+            "href": "https://hvoy.ai/model-select"
+          },
+          {
+            "label": "连通性测试",
+            "href": "https://hvoy.ai/"
+          },
+          {
+            "label": "余额查询",
+            "href": "https://hvoy.ai/"
+          },
+          {
+            "label": "在线画布",
+            "href": "https://hvoy.ai/ai-image-painter"
+          },
+          {
+            "label": "站点公告",
+            "href": "https://hvoy.ai/"
+          }
+        ]
+      },
+      {
+        "header": "关于",
+        "items": [
+          {
+            "label": "用户协议",
+            "href": "https://hvoy.ai/terms"
+          },
+          {
+            "label": "隐私协议",
+            "href": "https://hvoy.ai/privacy"
+          },
+          {
+            "label": "GitHub",
+            "href": "https://github.com/zzsting88/relayAPI"
+          }
+        ]
+      },
+      {
+        "header": "联系我们",
+        "items": [
+          {
+            "label": "联系我们",
+            "href": "https://www.hvoy.ai/contact?tab=contact"
+          },
+          {
+            "label": "TG 群",
+            "href": "https://t.me/hvoy_ai"
+          },
+          {
+            "label": "QQ 社群",
+            "href": "https://qm.qq.com/cgi-bin/qm/qr?k=941038588"
+          }
+        ]
+      }
+    ],
     "socials": {
       "website": "https://hvoy.ai",
-      "github": "https://github.com/hvoy"
+      "github": "https://github.com/zzsting88/relayAPI"
     }
   },
   "styling": {
@@ -54,6 +135,9 @@
       }
     }
   },
+  "scripts": [
+    "/sidebar-toggle.js"
+  ],
   "navigation": {
     "languages": [
       {
@@ -64,22 +148,34 @@
             "tab": "文档",
             "groups": [
               {
-                "group": "开始使用",
+                "group": "平台概览",
                 "pages": [
                   "cn/docs/get-started/about",
                   "cn/docs/get-started/help"
                 ]
               },
               {
-                "group": "hvoy.ai",
+                "group": "常见问题",
                 "pages": [
-                  "cn/docs/hvoyai/verify",
-                  "cn/docs/hvoyai/link",
+                  "cn/docs/faq/user",
+                  "cn/docs/faq/partner"
+                ]
+              },
+              {
+                "group": "用户指南",
+                "pages": [
+                  "cn/docs/hvoyai/user-benefits",
                   "cn/docs/hvoyai/tokenUsage",
+                  "cn/docs/hvoyai/verify"
+                ]
+              },
+              {
+                "group": "站长指南",
+                "pages": [
                   "cn/docs/hvoyai/price-api",
-                  "cn/docs/hvoyai/cpm",
                   "cn/docs/hvoyai/rank",
-                  "cn/docs/hvoyai/index-rank"
+                  "cn/docs/hvoyai/index-rank",
+                  "cn/docs/hvoyai/cpm"
                 ]
               }
               
@@ -92,7 +188,39 @@
         "tabs": [
           {
             "tab": "Docs",
-            "groups": [{ "group": "Getting started", "pages": ["en/index"] }]
+            "groups": [
+              {
+                "group": "Platform Overview",
+                "pages": [
+                  "en/docs/get-started/about",
+                  "en/docs/get-started/help"
+                ]
+              },
+              {
+                "group": "FAQ",
+                "pages": [
+                  "en/docs/faq/user",
+                  "en/docs/faq/partner"
+                ]
+              },
+              {
+                "group": "User Guide",
+                "pages": [
+                  "en/docs/hvoyai/user-benefits",
+                  "en/docs/hvoyai/tokenUsage",
+                  "en/docs/hvoyai/verify"
+                ]
+              },
+              {
+                "group": "Partner Guide",
+                "pages": [
+                  "en/docs/hvoyai/price-api",
+                  "en/docs/hvoyai/rank",
+                  "en/docs/hvoyai/index-rank",
+                  "en/docs/hvoyai/cpm"
+                ]
+              }
+            ]
           }
         ]
       }

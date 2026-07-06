@@ -1,0 +1,56 @@
+---
+title: "hvoy Leaderboard Ranking Logic"
+sidebarTitle: "hvoy Leaderboard Ranking Logic"
+mode: wide
+---
+
+The hvoy leaderboard shows available relay-site groups by model. It displays site, group, price, price trend, uptime, suspected watering rate, latency, and running status so users can compare options more easily.
+
+The default featured ranking is not based on a single metric and is not simply "lowest price first." hvoy calculates a comprehensive recommendation score from probing, price fetching, user behavior, site verification, and other signals.
+
+## Main Ranking Factors
+
+### 1. Site and group stability
+
+Stability is one of the most important factors. hvoy continuously tests availability, recent uptime, consecutive success, failure frequency, abnormal fluctuations, and running status.
+
+### 2. Recent price and price changes
+
+The leaderboard considers recent fetched prices and price trends. A low price can be attractive, but hvoy also considers stability, credibility, and whether an unusually low price comes with quality risk.
+
+### 3. hvoy internal quality score
+
+hvoy maintains an internal quality score for each group. It considers availability, response quality, abnormal results, suspected model mismatch, and consistency of probing data.
+
+### 4. Latency
+
+Latency affects real user experience. Lower latency is generally better, but it is not the only ranking signal.
+
+### 5. First successful test time
+
+The first time a site passes testing on hvoy is also considered. Older sites with long stable history may have more observable data.
+
+### 6. Verification status
+
+Verified sites receive additional trust signals, but verification does not guarantee permanent priority.
+
+### 7. Partner Pro traffic weighting
+
+Partner Pro may provide additional visibility support, but it does not override baseline quality requirements.
+
+### 8. User click-through rate
+
+Click behavior helps hvoy understand whether users find a result useful under similar exposure conditions.
+
+### 9. User test volume and pass rate
+
+Recent user tests and overall pass rate help measure real-world usability.
+
+## Dynamic Changes
+
+Ranking changes as probing results, prices, user tests, click behavior, and site status change. The goal is to help users find sites and groups that are currently worth trying, not to create a permanent fixed ranking.
+
+<div className="doc-support-footer">
+  <span>Still have questions?</span>
+  <a href="/en/docs/get-started/help">Get support</a>
+</div>

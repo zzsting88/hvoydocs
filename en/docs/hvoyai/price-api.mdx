@@ -1,0 +1,58 @@
+---
+title: "Third-Party Price API Specification"
+sidebarTitle: "Third-Party Price API Specification"
+description: "A unified third-party price interface for relay sites, used by hvoy to fetch price data"
+mode: wide
+---
+
+hvoy supports price fetching for NewAPI by default, and some Sub2API price fetching is also supported.
+
+For sites that do not match existing formats, please expose a compatible endpoint for hvoy based on this specification.
+
+The latest reference is available here:
+
+https://hvoy.ai/docs/provider-price-api-markdown
+
+The endpoint should return at least the following data:
+
+```json
+{
+  "schema_version": "1.0",
+  "success": true,
+  "message": "",
+  "data": {
+    "currency": "CNY",
+    "price_unit": "per_1m_tokens",
+    "site_name": "hvoy",
+    "site_domain": "hvoy.ai",
+    "updated_at": "2026-04-22T12:00:00Z",
+    "models": [
+      {
+        "model_name": "claude-sonnet-4-6",
+        "group_name": "cc",
+        "input_price": 7.5,
+        "output_price": 37.5,
+        "cache_input_price": 0.75,
+        "cache_create_price": 9.375,
+        "cache_create_price_1h": 15,
+        "enabled": true,
+        "note": ""
+      }
+    ]
+  }
+}
+```
+
+Key fields:
+
+- `currency`: price currency, such as `CNY`.
+- `price_unit`: price unit, such as `per_1m_tokens`.
+- `site_name` and `site_domain`: site identity used for matching and display.
+- `models`: model and group price list.
+- `enabled`: whether this model or group is currently available.
+- `note`: optional extra information.
+
+<div className="doc-support-footer">
+  <span>Still have questions?</span>
+  <a href="/en/docs/get-started/help">Get support</a>
+</div>

@@ -1,0 +1,81 @@
+---
+title: "CPM Advertising"
+sidebarTitle: "CPM Advertising"
+mode: wide
+---
+
+CPM advertising is billed by confirmed billable impressions per thousand views. You recharge the Partner wallet, create a CPM campaign, select coverage, and set bids. hvoy shows ads when users visit eligible homepage or leaderboard positions, and only charges impressions that pass visibility and platform quality checks.
+
+Clicks do not create extra CPM charges.
+
+## Quick Start
+
+1. Make sure your account has a site and the site has active Partner Pro.
+2. Confirm that the site profile and landing page are usable.
+3. Recharge the Partner wallet.
+4. Create a campaign and select the site and coverage.
+5. Set a CPM bid for each coverage. The bid must not be lower than the current floor price.
+6. Configure total budget, daily budget, date range, daily time window, and landing-page tracking if needed.
+7. Use the preview link before launching. Preview does not create real charges.
+8. After launch, use the campaign overview and campaign detail pages to view opportunities, viewable impressions, billable impressions, clicks, and spend.
+
+## Campaign Management
+
+In the Partner dashboard you can:
+
+- View campaign details, funnel, trends, coverage breakdown, clearing price distribution, and operation history.
+- Generate preview links.
+- Edit budget, time, long-running status, daily time windows, and landing-page tracking.
+- Add or disable coverage.
+- Adjust CPM bids.
+- Pause, resume, archive, or duplicate campaigns.
+
+## Coverage and Eligibility
+
+Coverage is the unit that participates in ad opportunities. A coverage usually represents a page, model group, and placement, such as "leaderboard / GPT-5.5 / search top."
+
+A coverage can participate only when:
+
+- The campaign and coverage are enabled.
+- The site and Partner account are in normal status.
+- Partner Pro is active.
+- Wallet balance is sufficient.
+- Budgets are not exhausted.
+- The current time is within the schedule.
+- The CPM bid is valid and not below the floor price.
+- The site profile and landing page can be displayed.
+- Platform quality requirements are met.
+
+## Ranking and Clearing Price
+
+Real traffic uses manual CPM bids only. hvoy does not support automatic bidding, oCPM, no-bid, CPC, or CPA for this flow.
+
+Candidates in the same placement are sorted by CPM bid from high to low. If bids are equal, creation time and campaign ID are used to keep results deterministic.
+
+The clearing price follows a generalized second-price style:
+
+```text
+actual CPM = min(your bid, max(floor price, next different site's valid bid + ¥0.01))
+```
+
+The actual CPM never exceeds your bid.
+
+## What Counts as a Valid Impression
+
+A standard sponsored placement becomes billable only when:
+
+- At least 50% of the ad element is visible in the viewport.
+- It remains visible for at least 1000 ms.
+- The impression happens in a real, confirmable user browsing scenario.
+- The impression passes budget and quality confirmation.
+
+Preview ads, test campaigns, organic recommendation displays, and organic recommendation clicks do not trigger CPM charges.
+
+## Troubleshooting Low Exposure
+
+If exposure is low, check campaign status, coverage status, Partner Pro, wallet balance, budget, campaign dates, daily time windows, CPM bid, floor price, and whether the site has been probed for the selected model.
+
+<div className="doc-support-footer">
+  <span>Still have questions?</span>
+  <a href="/en/docs/get-started/help">Get support</a>
+</div>
