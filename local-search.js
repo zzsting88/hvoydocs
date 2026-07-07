@@ -207,13 +207,15 @@
       const text = `${el.id} ${el.className || ""} ${el.getAttribute("aria-label") || ""} ${el.textContent || ""}`.toLowerCase();
       const looksLikeAssistant = /assistant|ask|chat|ai/.test(text);
       const isFloatingCorner =
+        style.display !== "none" &&
+        style.visibility !== "hidden" &&
         (style.position === "fixed" || style.position === "sticky") &&
         rect.width <= 96 &&
         rect.height <= 96 &&
-        rect.right > window.innerWidth - 160 &&
+        (rect.right > window.innerWidth - 160 || rect.left < 160) &&
         rect.bottom > window.innerHeight - 180;
 
-      if (looksLikeAssistant || isFloatingCorner) {
+      if (el.id !== "sidebar-collapse-toggle" && (looksLikeAssistant || isFloatingCorner)) {
         el.style.setProperty("display", "none", "important");
       }
     });

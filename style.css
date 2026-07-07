@@ -172,6 +172,14 @@ div:has(> .nav-tabs) {
   display: none !important;
 }
 
+body > button[style*="position: fixed"],
+body > a[style*="position: fixed"],
+body > div[style*="position: fixed"][class*="assistant"],
+body > div[style*="position: fixed"][class*="chat"],
+body > div[style*="position: fixed"][data-testid*="assistant"] {
+  display: none !important;
+}
+
 #localization-select-trigger {
   position: fixed !important;
   top: 16px;
