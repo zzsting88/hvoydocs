@@ -204,8 +204,8 @@
     document.querySelectorAll("button, a, [role='button']").forEach((el) => {
       const rect = el.getBoundingClientRect();
       const style = window.getComputedStyle(el);
-      const text = `${el.id} ${el.className || ""} ${el.getAttribute("aria-label") || ""} ${el.textContent || ""}`.toLowerCase();
-      const looksLikeAssistant = /assistant|ask|chat|ai/.test(text);
+      const marker = `${el.id} ${el.className || ""} ${el.getAttribute("aria-label") || ""} ${el.getAttribute("data-testid") || ""}`.toLowerCase();
+      const looksLikeAssistant = /assistant|ask|chat/.test(marker);
       const isFloatingCorner =
         style.display !== "none" &&
         style.visibility !== "hidden" &&
