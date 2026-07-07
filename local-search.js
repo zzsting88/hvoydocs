@@ -25,9 +25,8 @@
   ];
 
   let indexPromise;
-  let overlay;
-  let input;
-  let results;
+  let activeInput;
+  let activePanel;
 
   function currentLanguage() {
     return location.pathname.startsWith("/en/") ? "en" : "cn";
@@ -95,12 +94,13 @@
     return `${start > 0 ? "..." : ""}${value}${start + 118 < text.length ? "..." : ""}`;
   }
 
-  function renderResults(query, pages) {
+  function renderResults(query, panel, pages) {
     const rawQuery = normalize(query);
     const terms = rawQuery.split(/[ ,，。；;、]+/).filter(Boolean);
 
     if (!rawQuery) {
-      results.innerHTML = '<div class="local-search-empty">请输入标题或正文关键词</div>';
+      panel.innerHTML = '<div class="local-search-empty">请输入标题或正文关键词</div>';
+      panel.dataset.open = "false";
       return;
     }
 
@@ -110,12 +110,14 @@
       .sort((a, b) => b.score - a.score)
       .slice(0, 8);
 
+    panel.dataset.open = "true";
+
     if (!matches.length) {
-      results.innerHTML = '<div class="local-search-empty">没有找到匹配教程</div>';
+      panel.innerHTML = '<div class="local-search-empty">没有找到匹配教程</div>';
       return;
     }
 
-    results.innerHTML = matches
+    panel.innerHTML = matches
       .map(
         (page) => `
           <a class="local-search-result" href="${page.url}">
@@ -127,68 +129,51 @@
       .join("");
   }
 
-  function ensureOverlay() {
-    if (overlay) return;
+  function closeSearch() {
+    if (activePanel) activePanel.dataset.open = "false";
+  }
 
-    overlay = document.createElement("div");
-    overlay.className = "local-search-overlay";
-    overlay.innerHTML = `
-      <div class="local-search-backdrop"></div>
-      <div class="local-search-dialog" role="dialog" aria-modal="true" aria-label="搜索帮助文档">
-        <div class="local-search-input-wrap">
-          <span aria-hidden="true">⌕</span>
-          <input class="local-search-input" type="search" placeholder="搜索教程标题或正文关键词" />
-          <button class="local-search-close" type="button" aria-label="关闭搜索">×</button>
-        </div>
-        <div class="local-search-results">
-          <div class="local-search-empty">请输入标题或正文关键词</div>
-        </div>
+  function createSearch(entry) {
+    const holder = document.createElement("div");
+    holder.className = "inline-local-search";
+    holder.innerHTML = `
+      <div class="inline-local-search-field">
+        <span aria-hidden="true">⌕</span>
+        <input class="inline-local-search-input" type="search" placeholder="搜索教程标题或正文关键词" />
+      </div>
+      <div class="inline-local-search-results" data-open="false">
+        <div class="local-search-empty">请输入标题或正文关键词</div>
       </div>
     `;
-    document.body.appendChild(overlay);
 
-    input = overlay.querySelector(".local-search-input");
-    results = overlay.querySelector(".local-search-results");
+    entry.replaceWith(holder);
+    const input = holder.querySelector(".inline-local-search-input");
+    const panel = holder.querySelector(".inline-local-search-results");
 
-    overlay.querySelector(".local-search-backdrop").addEventListener("click", closeSearch);
-    overlay.querySelector(".local-search-close").addEventListener("click", closeSearch);
-    input.addEventListener("input", function () {
-      buildIndex().then((pages) => renderResults(input.value, pages));
+    input.addEventListener("focus", function () {
+      activeInput = input;
+      activePanel = panel;
+      if (input.value.trim()) panel.dataset.open = "true";
+      buildIndex().then((pages) => renderResults(input.value, panel, pages));
     });
-    overlay.addEventListener("click", function (event) {
+
+    input.addEventListener("input", function () {
+      activeInput = input;
+      activePanel = panel;
+      buildIndex().then((pages) => renderResults(input.value, panel, pages));
+    });
+
+    panel.addEventListener("mousedown", function (event) {
       const link = event.target.closest(".local-search-result");
       if (link) closeSearch();
     });
-  }
-
-  function openSearch(event) {
-    if (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    ensureOverlay();
-    overlay.dataset.open = "true";
-    document.documentElement.classList.add("local-search-open");
-    input.value = "";
-    results.innerHTML = '<div class="local-search-empty">正在准备搜索...</div>';
-    buildIndex().then((pages) => {
-      renderResults("", pages);
-      input.focus();
-    });
-  }
-
-  function closeSearch() {
-    if (!overlay) return;
-    overlay.dataset.open = "false";
-    document.documentElement.classList.remove("local-search-open");
   }
 
   function bindSearchEntry() {
     document.querySelectorAll("#search-bar-entry, #search-bar-entry-mobile").forEach((entry) => {
       if (entry.dataset.localSearchBound) return;
       entry.dataset.localSearchBound = "true";
-      entry.addEventListener("click", openSearch, true);
+      createSearch(entry);
     });
   }
 
@@ -198,7 +183,7 @@
         '#assistant-entry, #assistant-entry-mobile, [id*="assistant"], [data-testid*="assistant"], [aria-label*="assistant" i], [aria-label*="ask" i]'
       )
       .forEach((el) => {
-        if (!el.closest(".local-search-overlay")) el.style.setProperty("display", "none", "important");
+        if (!el.closest(".inline-local-search")) el.style.setProperty("display", "none", "important");
       });
 
     document.querySelectorAll("button, a, [role='button']").forEach((el) => {
@@ -226,11 +211,15 @@
     hideAssistantWidgets();
 
     document.addEventListener("keydown", function (event) {
-      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
-        openSearch(event);
-      } else if (event.key === "Escape") {
-        closeSearch();
+      if (event.key === "Escape") closeSearch();
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k" && activeInput) {
+        event.preventDefault();
+        activeInput.focus();
       }
+    });
+
+    document.addEventListener("mousedown", function (event) {
+      if (!event.target.closest(".inline-local-search")) closeSearch();
     });
 
     const observer = new MutationObserver(function () {
