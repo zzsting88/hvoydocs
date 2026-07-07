@@ -40,9 +40,48 @@
     setCollapsed(getInitialCollapsed());
   }
 
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+    return Promise.resolve();
+  }
+
+  function bindCopyButtons() {
+    document.querySelectorAll(".support-copy:not([data-copy-bound])").forEach(function (button) {
+      button.dataset.copyBound = "true";
+      button.addEventListener("click", function () {
+        const text = button.dataset.copyText || "";
+        const original = button.innerHTML;
+        copyText(text).then(function () {
+          button.innerHTML = button.textContent.trim().toLowerCase().startsWith("copy")
+            ? "Copied <span>✓</span>"
+            : "已复制 <span>✓</span>";
+          window.setTimeout(function () {
+            button.innerHTML = original;
+          }, 1400);
+        });
+      });
+    });
+  }
+
   function boot() {
     ensureToggle();
-    const observer = new MutationObserver(ensureToggle);
+    bindCopyButtons();
+    const observer = new MutationObserver(function () {
+      ensureToggle();
+      bindCopyButtons();
+    });
     observer.observe(document.body, { childList: true, subtree: true });
   }
 

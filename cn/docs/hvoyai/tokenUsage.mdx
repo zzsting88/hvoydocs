@@ -1,7 +1,7 @@
 ---
 title: "免费 Token 使用教程"
 sidebarTitle: "免费 Token 使用"
-description: "从 hvoy 免费抽奖或免费 API key 页面拿到 Token 后, 在 Codex、Claude Code 和 CCSwitch 中使用的方法"
+description: "从 hvoy 免费抽奖或免费 API Key 页面拿到 Token 后，在 Codex、Claude Code 和 CCSwitch 中使用的方法"
 mode: wide
 ---
 
@@ -14,36 +14,36 @@ mode: wide
 - [常见问题](#常见问题)
 - [外部链接](#外部链接)
 
-用户从 hvoy 拿到免费 Token 后, 先看它来自哪里:
+用户从 hvoy 拿到免费 Token 后，先看它来自哪里：
 
 | Token 来源 | 推荐用法 |
 | --- | --- |
-| [免费抽奖](https://hvoy.ai/free-tokens/lottery)中奖得到的 Token | 先导入 CCSwitch, 再接入 Codex  |
-| [免费 API key](https://hvoy.ai/free-tokens/api-keys)栏目领取的 Token | 先导入 CCSwitch, 再接入 Codex 或 Claude Code |
+| [免费抽奖](https://hvoy.ai/free-tokens/lottery)中奖得到的 Token | 先导入 CCSwitch，再接入 Codex |
+| [免费 API Key](https://hvoy.ai/free-tokens/api-keys)栏目领取的 Token | 先导入 CCSwitch，再接入 Codex 或 Claude Code |
 | 小米 MiMo 免费分享 Token | 参考小米官方工具接入文档 |
 
 <Warning>
-API Key 等同于账号密码。不要把完整 API Key 发到群里、Issue、截图或公开文档里。需要截图时, 请先遮挡 Key 的中间部分。
+API Key 等同于账号密码。不要把完整 API Key 发到群里、Issue、截图或公开文档里。需要截图时，请先遮挡 Key 的中间部分。
 </Warning>
 
 ## 先判断 Token 来源
 
-如果您是在 hvoy 顶部菜单进入的, 一般都在 **免费 Token** 菜单下面:
+如果您是在 hvoy 顶部菜单进入的，一般都在 **免费 Token** 菜单下面：
 
 ![hvoy 免费 Token 入口](/assets/images/token-usage/hvoy-lottery-annotated.png)
 
 ## 抽奖 Token 用在 Codex
 
-如果您的 Token 是从 [hvoy 免费抽奖](https://hvoy.ai/free-tokens/lottery)得到的, 一般可以直接给 Codex 使用。
+如果您的 Token 是从 [hvoy 免费抽奖](https://hvoy.ai/free-tokens/lottery)得到的，一般可以直接给 Codex 使用。
 
 ### 找到 API URL 和 API Key
 
-1. 打开 [免费抽奖](https://hvoy.ai/free-tokens/lottery), 登录后点击 **我的记录**。
-2. 打开 [我的抽奖记录](https://hvoy.ai/free-tokens/lottery/mine), 查看中奖次数和中奖记录。
-3. 点击某一次中奖记录的 **查看详情**, 例如 `https://hvoy.ai/free-tokens/lottery/mine/2026-06-11-1400` 这种详情页。
+1. 打开 [免费抽奖](https://hvoy.ai/free-tokens/lottery)，登录后点击 **我的记录**。
+2. 打开 [我的抽奖记录](https://hvoy.ai/free-tokens/lottery/mine)，查看中奖次数和中奖记录。
+3. 点击某一次中奖记录的 **查看详情**，例如 `https://hvoy.ai/free-tokens/lottery/mine/2026-06-11-1400` 这种详情页。
 4. 在详情页复制 **API URL** 和 **API Key**。
 
-中奖详情页属于个人页面, 会显示您的真实 API Key。本文档不放真实页面截图, 避免误把 Key 泄露出去。
+中奖详情页属于个人页面，会显示您的真实 API Key。本文档不放真实页面截图，避免误把 Key 泄露出去。
 
 ![我的抽奖记录示意](/assets/images/token-usage/zhongjiangjilu.jpg)
 
@@ -51,31 +51,31 @@ API Key 等同于账号密码。不要把完整 API Key 发到群里、Issue、�
 
 
 
-## 测试API Key是否可用
-hvoy.ai会每5分钟检查一次APIKey是否可用, 所以一般情况下, 这些API Key都是可以使用的.
+## 测试 API Key 是否可用
+hvoy.ai 会每 5 分钟检查一次 API Key 是否可用，所以一般情况下，这些 API Key 都是可以使用的。
 
-如果您觉得API Key不可用, 可以用[这个页面](https://hvoy.ai/api-key-tester)来进行测试
+如果您觉得 API Key 不可用，可以用[这个页面](https://hvoy.ai/api-key-tester)来进行测试。
 
-![输入apikey](/assets/images/token-usage/testKey.jpg)
+![输入 API Key](/assets/images/token-usage/testKey.jpg)
 
-![APIKey测试结果](/assets/images/token-usage/testResult.jpg)
+![API Key 测试结果](/assets/images/token-usage/testResult.jpg)
 
 
 ## 免费 API Key 用 CCSwitch 接入
 
-如果您的 Token 来自 [免费 API key](https://hvoy.ai/free-tokens/api-keys)栏目, 一般建议先用 CCSwitch 管理, 再由 CCSwitch 接入 Codex 或 Claude Code。
+如果您的 Token 来自 [免费 API Key](https://hvoy.ai/free-tokens/api-keys)栏目，一般建议先用 CCSwitch 管理，再由 CCSwitch 接入 Codex 或 Claude Code。
 
-在这个页面里, 每一行都会显示 API URL、API Key、模型和领取按钮。先领取, 再复制 API URL 和 API Key。
+在这个页面里，每一行都会显示 API URL、API Key、模型和领取按钮。先领取，再复制 API URL 和 API Key。
 
-![hvoy 免费 API key 列表](/assets/images/token-usage/hvoy-api-keys-annotated.png)
+![hvoy 免费 API Key 列表](/assets/images/token-usage/hvoy-api-keys-annotated.png)
 
-CCSwitch 是一个本地桌面工具, 可以统一管理 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes 等工具的供应商配置、切换和本地路由。官方文档见 [CCSwitch 快速开始](https://www.ccswitch.io/zh/docs?section=getting-started&item=quickstart), 下载见 [GitHub Releases](https://github.com/farion1231/cc-switch/releases)。
+CCSwitch 是一个本地桌面工具，可以统一管理 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes 等工具的供应商配置、切换和本地路由。官方文档见 [CCSwitch 快速开始](https://www.ccswitch.io/zh/docs?section=getting-started&item=quickstart)，下载见 [GitHub Releases](https://github.com/farion1231/cc-switch/releases)。
 
 ![CCSwitch 主界面](/assets/images/token-usage/ccswitch-main-annotated.png)
 
 ### 安装 CCSwitch
 
-打开 [CCSwitch Releases](https://github.com/farion1231/cc-switch/releases), 按系统下载:
+打开 [CCSwitch Releases](https://github.com/farion1231/cc-switch/releases)，按系统下载：
 
 ![CCSwitch 下载页面](/assets/images/token-usage/ccswitch-releases-annotated.png)
 
@@ -91,27 +91,27 @@ macOS 也可以用 Homebrew:
 brew install --cask cc-switch
 ```
 
-### 添加 hvoy 免费 API key
+### 添加 hvoy 免费 API Key
 
-1. 打开 [免费 API key](https://hvoy.ai/free-tokens/api-keys), 复制页面给出的 API URL 和 API Key。
+1. 打开 [免费 API Key](https://hvoy.ai/free-tokens/api-keys)，复制页面给出的 API URL 和 API Key。
 2. 打开 CCSwitch。
-3. 选择要接入的应用, 例如 **Codex** 或 **Claude Code**。
+3. 选择要接入的应用，例如 **Codex** 或 **Claude Code**。
 4. 点击右上角的 `+` 添加供应商。
-5. 如果列表里有对应供应商预设, 优先选择预设; 没有就选择自定义供应商。
+5. 如果列表里有对应供应商预设，优先选择预设；没有就选择自定义供应商。
 6. 填入 API URL、API Key 和模型名。
-7. 点击添加, 然后在供应商卡片上点击启用。
+7. 点击添加，然后在供应商卡片上点击启用。
 
 ![CCSwitch 添加供应商入口](/assets/images/token-usage/ccswitch-add-annotated.png)
 
 ![CCSwitch 关键字段填写示意](/assets/images/token-usage/ccswitch-fields-demo.png)
 
-Codex 切换供应商后通常需要重启终端或重新打开 Codex。Claude Code 在 CCSwitch 文档中说明为支持热切换, 但如果您遇到不生效, 也建议先关闭再重新打开。
+Codex 切换供应商后通常需要重启终端或重新打开 Codex。Claude Code 在 CCSwitch 文档中说明为支持热切换，但如果您遇到不生效，也建议先关闭再重新打开。
 
 ### Codex 需要本地路由时
 
-有些免费 API key 背后的服务只支持 OpenAI Chat Completions 协议, 而 Codex 更依赖 Responses 协议。遇到这种情况, 需要让 CCSwitch 开启本地路由映射。
+有些免费 API Key 背后的服务只支持 OpenAI Chat Completions 协议，而 Codex 更依赖 Responses 协议。遇到这种情况，需要让 CCSwitch 开启本地路由映射。
 
-在 CCSwitch 的 Codex 供应商里:
+在 CCSwitch 的 Codex 供应商里：
 
 1. 打开或确认 **需要本地路由映射**。
 2. 确认模型映射表里有可用模型。
@@ -128,7 +128,7 @@ CCSwitch 官方文档对这部分有更完整说明:
 
 ### 写入 Codex 配置
 
-如果您不用 CCSwitch, 可以直接把抽奖页给出的 API URL 和 API Key 写入 Codex 配置。
+如果您不用 CCSwitch，可以直接把抽奖页给出的 API URL 和 API Key 写入 Codex 配置。
 
 ![Codex 配置字段示意](/assets/images/token-usage/codex-config-demo.png)
 
@@ -155,51 +155,51 @@ wire_api = "responses"
 requires_openai_auth = true
 ```
 
-保存后关闭当前 Codex 和终端, 重新打开终端再运行:
+保存后关闭当前 Codex 和终端，重新打开终端再运行：
 
 ```bash
 codex
 ```
 
-进入 Codex 后可以先问一句简单问题测试:
+进入 Codex 后可以先问一句简单问题测试：
 
 ```text
-您好, 请用一句话说明您现在是否可以正常工作
+您好，请用一句话说明您现在是否可以正常工作
 ```
 
 <Warning>
-API URL 以中奖详情页显示为准。不要随意删掉或追加 `/v1`、`/responses` 等路径, 除非页面明确要求。
+API URL 以中奖详情页显示为准。不要随意删掉或追加 `/v1`、`/responses` 等路径，除非页面明确要求。
 </Warning>
 
 ## 小米 MiMo Token
 
-如果您的免费 Token 是小米 MiMo 的分享 Token, 不要直接套用普通 OpenAI 或 Anthropic 配置。请优先看小米官方工具接入文档:
+如果您的免费 Token 是小米 MiMo 的分享 Token，不要直接套用普通 OpenAI 或 Anthropic 配置。请优先看小米官方工具接入文档：
 
 ![小米 MiMo 工具接入页面](/assets/images/token-usage/xiaomi-tools-annotated.png)
 
 - [小米 MiMo 工具接入总览](https://platform.xiaomimimo.com/docs/zh-CN/integration/tools-overview)
-- [小米 MiMo 静态文档: Overview of AI Tools](https://platform.xiaomimimo.com/static/docs/integration/tools-overview.md)
+- [小米 MiMo 静态文档：Overview of AI Tools](https://platform.xiaomimimo.com/static/docs/integration/tools-overview.md)
 - [小米 MiMo Claude Code 配置](https://platform.xiaomimimo.com/static/docs/integration/claudecode.md)
 
-如果您通过 CCSwitch 使用小米 MiMo, 可以在 CCSwitch 里选择 **Xiaomi MiMo** 或 **MiMo Token Plan** 相关预设; 预设列表以您安装的 CCSwitch 版本为准。
+如果您通过 CCSwitch 使用小米 MiMo，可以在 CCSwitch 里选择 **Xiaomi MiMo** 或 **MiMo Token Plan** 相关预设；预设列表以您安装的 CCSwitch 版本为准。
 
 ## 常见问题
 
 ### 找不到 API URL
 
-先确认 Token 来源:
+先确认 Token 来源：
 
-- 抽奖 Token: 到 [我的抽奖记录](https://hvoy.ai/free-tokens/lottery/mine)里点进中奖详情页。
-- 免费 API key: 到 [免费 API key](https://hvoy.ai/free-tokens/api-keys)页面查看。
-- 小米 MiMo: 到小米平台控制台或小米官方工具接入文档查看。
+- 抽奖 Token：到 [我的抽奖记录](https://hvoy.ai/free-tokens/lottery/mine)里点进中奖详情页。
+- 免费 API Key：到 [免费 API Key](https://hvoy.ai/free-tokens/api-keys)页面查看。
+- 小米 MiMo：到小米平台控制台或小米官方工具接入文档查看。
 
 ### Codex 还是走旧的供应商
 
-Codex 通常在启动时读取配置。切换供应商或修改 `~/.codex/config.toml` 后, 关闭 Codex 和终端, 重新打开再试。
+Codex 通常在启动时读取配置。切换供应商或修改 `~/.codex/config.toml` 后，关闭 Codex 和终端，重新打开再试。
 
 ### 返回 401 或 403
 
-常见原因:
+常见原因：
 
 - API Key 没有复制完整。
 - API URL 填错或多加了路径。
@@ -208,17 +208,17 @@ Codex 通常在启动时读取配置。切换供应商或修改 `~/.codex/config
 
 ### 返回 model not found
 
-检查模型名是否是供应商支持的模型。使用 CCSwitch 时, 可以先点 **获取模型** 或按供应商文档填写模型名。
+检查模型名是否是供应商支持的模型。使用 CCSwitch 时，可以先点 **获取模型** 或按供应商文档填写模型名。
 
 ### 要不要把抽奖 Token 也放进 CCSwitch
 
-可以。如果您希望统一管理多个 Codex/Claude Code 供应商, 抽奖 Token 也可以作为 Codex 自定义供应商添加到 CCSwitch。只是抽奖 Token 本身通常可以直接给 Codex 用, 不一定必须经过 CCSwitch。
+可以。如果您希望统一管理多个 Codex/Claude Code 供应商，抽奖 Token 也可以作为 Codex 自定义供应商添加到 CCSwitch。只是抽奖 Token 本身通常可以直接给 Codex 用，不一定必须经过 CCSwitch。
 
 ## 外部链接
 
 - [hvoy 免费抽奖](https://hvoy.ai/free-tokens/lottery)
 - [我的抽奖记录](https://hvoy.ai/free-tokens/lottery/mine)
-- [hvoy 免费 API key](https://hvoy.ai/free-tokens/api-keys)
+- [hvoy 免费 API Key](https://hvoy.ai/free-tokens/api-keys)
 - [CCSwitch 官网快速开始](https://www.ccswitch.io/zh/docs?section=getting-started&item=quickstart)
 - [CCSwitch GitHub Releases](https://github.com/farion1231/cc-switch/releases)
 - [CCSwitch 用户手册](https://github.com/farion1231/cc-switch/blob/main/docs/user-manual/zh/README.md)

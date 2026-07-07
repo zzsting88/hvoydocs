@@ -1,20 +1,20 @@
 ---
 title: "第三方价格接口规范"
 sidebarTitle: "第三方价格接口规范"
-description: "本文档定义一个统一的第三方价格接口，供 API 中转站对外实现，供 hvoy.ai 抓取价格数据"
+description: "本文档定义统一的第三方价格接口，供 API 中转站对外实现，方便 hvoy.ai 抓取价格数据"
 mode: wide
 ---
 
 
-hvoy.ai 默认支持newapi的价格获取, hvoy.ai 默认合作站长允许hvoy.ai 抓取价格进行展示. 如果有站长不允许价格抓取, 请联系我们关闭.
+合作站点默认允许 hvoy 抓取站点的模型价格进行展示。如果有站长不允许价格抓取，请联系我们关闭。
 
-我们也支持部分sub2api的价格抓取.
+hvoy 已支持 newapi 及部分 sub2api 系统站点的价格抓取。对于暂时不支持价格抓取的站点，请您按照以下规范开发一个价格接口，并将 URL 通过站长后台提交工单给我们，我们收到后会帮您处理。
 
-最新的文档请参考  https://hvoy.ai/docs/provider-price-api-markdown
+开发文档规范：https://hvoy.ai/docs/provider-price-api
 
-对于一些不支持格式的站点,  请沿用这个规范, 向hvoy.ai开放接口
+自测链接：https://hvoy.ai/docs/provider-price-api-fetch
 
-请准备一个接口, 返回最少以下数据.
+请准备一个接口，至少返回以下数据：
 
 ```
 {

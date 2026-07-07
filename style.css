@@ -412,7 +412,9 @@ code-block,
 }
 
 mdx-content a.support-action,
-a.support-action {
+mdx-content button.support-action,
+a.support-action,
+button.support-action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -423,16 +425,20 @@ a.support-action {
   border-radius: 9999px;
   background: #00c759;
   color: #06140b;
+  border: 0;
   font-size: 14px;
   line-height: 1;
   font-weight: 750;
   text-decoration: none;
   white-space: nowrap;
+  cursor: pointer;
   transition: transform 180ms ease, background-color 180ms ease;
 }
 
 mdx-content a.support-action:hover,
-a.support-action:hover {
+mdx-content button.support-action:hover,
+a.support-action:hover,
+button.support-action:hover {
   background: #00b84f;
   color: #06140b;
   transform: translateY(-1px);
@@ -467,7 +473,9 @@ a.support-action:hover {
   }
 
   mdx-content a.support-action,
-  a.support-action {
+  mdx-content button.support-action,
+  a.support-action,
+  button.support-action {
     width: 100%;
   }
 }
@@ -903,6 +911,15 @@ mdx-content .faq-link:hover,
 .faq-link:hover {
   color: var(--tong-blue-dark);
   text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+mdx-content a.plain-url,
+a.plain-url {
+  color: inherit;
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-color: #00c759;
   text-underline-offset: 3px;
 }
 
