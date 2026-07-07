@@ -136,7 +136,8 @@
     }
   },
   "scripts": [
-    "/sidebar-toggle.js"
+    "/sidebar-toggle.js",
+    "/local-search.js"
   ],
   "navigation": {
     "languages": [

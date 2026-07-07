@@ -162,6 +162,16 @@ div:has(> .nav-tabs) {
   color: rgba(255, 255, 255, 0.88) !important;
 }
 
+#assistant-entry,
+#assistant-entry-mobile,
+[id*="assistant"],
+[data-testid*="assistant"],
+[aria-label*="assistant" i],
+[aria-label*="Ask" i],
+[aria-label*="ask" i] {
+  display: none !important;
+}
+
 #localization-select-trigger {
   position: fixed !important;
   top: 16px;
@@ -926,6 +936,120 @@ a.plain-url {
 code,
 pre {
   border-radius: 8px;
+}
+
+.local-search-open {
+  overflow: hidden;
+}
+
+.local-search-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.local-search-overlay[data-open="true"] {
+  display: block;
+}
+
+.local-search-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 5, 6, 0.42);
+  backdrop-filter: blur(8px);
+}
+
+.local-search-dialog {
+  position: relative;
+  width: min(680px, calc(100vw - 32px));
+  margin: 88px auto 0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+.local-search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.local-search-input-wrap > span {
+  color: var(--tong-ink-muted);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.local-search-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: var(--tong-ink);
+  font-size: 16px;
+  line-height: 1.4;
+  background: transparent;
+}
+
+.local-search-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 999px;
+  background: #f1f2f4;
+  color: var(--tong-ink-muted);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.local-search-results {
+  max-height: min(58vh, 520px);
+  overflow: auto;
+  padding: 8px;
+}
+
+.local-search-empty {
+  padding: 28px 18px;
+  color: var(--tong-ink-muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+a.local-search-result {
+  display: block;
+  padding: 14px 16px;
+  border-radius: 12px;
+  color: var(--tong-ink);
+  text-decoration: none;
+}
+
+a.local-search-result:hover {
+  background: #f4fbf7;
+}
+
+.local-search-result span {
+  display: block;
+  color: var(--tong-ink);
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.local-search-result small {
+  display: block;
+  margin-top: 6px;
+  color: var(--tong-ink-muted);
+  font-size: 13px;
+  line-height: 1.55;
 }
 
 method-pill,
