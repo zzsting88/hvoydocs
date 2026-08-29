@@ -11,7 +11,7 @@
   "logo": {
     "light": "/assets/logo/hvoy-wordmark.svg",
     "dark": "/assets/logo/hvoy-wordmark.svg",
-    "href": "https://hvoy.ai"
+    "href": "https://www.hvoyai.com"
   },
   "appearance": {
     "default": "light"
@@ -47,43 +47,43 @@
         "items": [
           {
             "label": "模型榜单",
-            "href": "https://hvoy.ai/leaderboard"
+            "href": "https://www.hvoyai.com/leaderboard"
           },
           {
             "label": "站点信息",
-            "href": "https://hvoy.ai/"
+            "href": "https://www.hvoyai.com/"
           },
           {
             "label": "免费Token",
-            "href": "https://hvoy.ai/free-tokens/lottery"
+            "href": "https://www.hvoyai.com/free-tokens/lottery"
           },
           {
             "label": "福利中心",
-            "href": "https://hvoy.ai/free-tokens/lottery"
+            "href": "https://www.hvoyai.com/free-tokens/lottery"
           },
           {
             "label": "邀请好友",
-            "href": "https://hvoy.ai/free-tokens/invite-codes"
+            "href": "https://www.hvoyai.com/free-tokens/invite-codes"
           },
           {
             "label": "模型择优",
-            "href": "https://hvoy.ai/model-select"
+            "href": "https://www.hvoyai.com/model-select"
           },
           {
             "label": "连通性测试",
-            "href": "https://hvoy.ai/"
+            "href": "https://www.hvoyai.com/"
           },
           {
             "label": "余额查询",
-            "href": "https://hvoy.ai/"
+            "href": "https://www.hvoyai.com/"
           },
           {
             "label": "在线画布",
-            "href": "https://hvoy.ai/ai-image-painter"
+            "href": "https://www.hvoyai.com/ai-image-painter"
           },
           {
             "label": "站点公告",
-            "href": "https://hvoy.ai/"
+            "href": "https://www.hvoyai.com/"
           }
         ]
       },
@@ -92,11 +92,11 @@
         "items": [
           {
             "label": "用户协议",
-            "href": "https://hvoy.ai/terms"
+            "href": "https://www.hvoyai.com/terms"
           },
           {
             "label": "隐私协议",
-            "href": "https://hvoy.ai/privacy"
+            "href": "https://www.hvoyai.com/privacy"
           },
           {
             "label": "GitHub",
@@ -109,7 +109,7 @@
         "items": [
           {
             "label": "联系我们",
-            "href": "https://www.hvoy.ai/contact?tab=contact"
+            "href": "https://www.hvoyai.com/contact?tab=contact"
           },
           {
             "label": "TG 群",
@@ -123,7 +123,7 @@
       }
     ],
     "socials": {
-      "website": "https://hvoy.ai",
+      "website": "https://www.hvoyai.com",
       "github": "https://github.com/zzsting88/relayAPI"
     }
   },

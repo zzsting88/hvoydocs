@@ -18,8 +18,8 @@ mode: wide
 
 | Token 来源 | 推荐用法 |
 | --- | --- |
-| [免费抽奖](https://hvoy.ai/free-tokens/lottery)中奖得到的 Token | 先导入 CCSwitch，再接入 Codex |
-| [免费 API Key](https://hvoy.ai/free-tokens/api-keys)栏目领取的 Token | 先导入 CCSwitch，再接入 Codex 或 Claude Code |
+| [免费抽奖](https://www.hvoyai.com/free-tokens/lottery)中奖得到的 Token | 先导入 CCSwitch，再接入 Codex |
+| [免费 API Key](https://www.hvoyai.com/free-tokens/api-keys)栏目领取的 Token | 先导入 CCSwitch，再接入 Codex 或 Claude Code |
 | 小米 MiMo 免费分享 Token | 参考小米官方工具接入文档 |
 
 <Warning>
@@ -34,13 +34,13 @@ API Key 等同于账号密码。不要把完整 API Key 发到群里、Issue、�
 
 ## 抽奖 Token 用在 Codex
 
-如果您的 Token 是从 [hvoy 免费抽奖](https://hvoy.ai/free-tokens/lottery)得到的，一般可以直接给 Codex 使用。
+如果您的 Token 是从 [hvoy 免费抽奖](https://www.hvoyai.com/free-tokens/lottery)得到的，一般可以直接给 Codex 使用。
 
 ### 找到 API URL 和 API Key
 
-1. 打开 [免费抽奖](https://hvoy.ai/free-tokens/lottery)，登录后点击 **我的记录**。
-2. 打开 [我的抽奖记录](https://hvoy.ai/free-tokens/lottery/mine)，查看中奖次数和中奖记录。
-3. 点击某一次中奖记录的 **查看详情**，例如 `https://hvoy.ai/free-tokens/lottery/mine/2026-06-11-1400` 这种详情页。
+1. 打开 [免费抽奖](https://www.hvoyai.com/free-tokens/lottery)，登录后点击 **我的记录**。
+2. 打开 [我的抽奖记录](https://www.hvoyai.com/free-tokens/lottery/mine)，查看中奖次数和中奖记录。
+3. 点击某一次中奖记录的 **查看详情**，例如 `https://www.hvoyai.com/free-tokens/lottery/mine/2026-06-11-1400` 这种详情页。
 4. 在详情页复制 **API URL** 和 **API Key**。
 
 中奖详情页属于个人页面，会显示您的真实 API Key。本文档不放真实页面截图，避免误把 Key 泄露出去。
@@ -52,9 +52,9 @@ API Key 等同于账号密码。不要把完整 API Key 发到群里、Issue、�
 
 
 ## 测试 API Key 是否可用
-hvoy.ai 会每 5 分钟检查一次 API Key 是否可用，所以一般情况下，这些 API Key 都是可以使用的。
+www.hvoyai.com 会每 5 分钟检查一次 API Key 是否可用，所以一般情况下，这些 API Key 都是可以使用的。
 
-如果您觉得 API Key 不可用，可以用[这个页面](https://hvoy.ai/api-key-tester)来进行测试。
+如果您觉得 API Key 不可用，可以用[这个页面](https://www.hvoyai.com/api-key-tester)来进行测试。
 
 ![输入 API Key](/assets/images/token-usage/testKey.jpg)
 
@@ -63,7 +63,7 @@ hvoy.ai 会每 5 分钟检查一次 API Key 是否可用，所以一般情况下
 
 ## 免费 API Key 用 CCSwitch 接入
 
-如果您的 Token 来自 [免费 API Key](https://hvoy.ai/free-tokens/api-keys)栏目，一般建议先用 CCSwitch 管理，再由 CCSwitch 接入 Codex 或 Claude Code。
+如果您的 Token 来自 [免费 API Key](https://www.hvoyai.com/free-tokens/api-keys)栏目，一般建议先用 CCSwitch 管理，再由 CCSwitch 接入 Codex 或 Claude Code。
 
 在这个页面里，每一行都会显示 API URL、API Key、模型和领取按钮。先领取，再复制 API URL 和 API Key。
 
@@ -93,7 +93,7 @@ brew install --cask cc-switch
 
 ### 添加 hvoy 免费 API Key
 
-1. 打开 [免费 API Key](https://hvoy.ai/free-tokens/api-keys)，复制页面给出的 API URL 和 API Key。
+1. 打开 [免费 API Key](https://www.hvoyai.com/free-tokens/api-keys)，复制页面给出的 API URL 和 API Key。
 2. 打开 CCSwitch。
 3. 选择要接入的应用，例如 **Codex** 或 **Claude Code**。
 4. 点击右上角的 `+` 添加供应商。
@@ -189,8 +189,8 @@ API URL 以中奖详情页显示为准。不要随意删掉或追加 `/v1`、`/r
 
 先确认 Token 来源：
 
-- 抽奖 Token：到 [我的抽奖记录](https://hvoy.ai/free-tokens/lottery/mine)里点进中奖详情页。
-- 免费 API Key：到 [免费 API Key](https://hvoy.ai/free-tokens/api-keys)页面查看。
+- 抽奖 Token：到 [我的抽奖记录](https://www.hvoyai.com/free-tokens/lottery/mine)里点进中奖详情页。
+- 免费 API Key：到 [免费 API Key](https://www.hvoyai.com/free-tokens/api-keys)页面查看。
 - 小米 MiMo：到小米平台控制台或小米官方工具接入文档查看。
 
 ### Codex 还是走旧的供应商
@@ -216,9 +216,9 @@ Codex 通常在启动时读取配置。切换供应商或修改 `~/.codex/config
 
 ## 外部链接
 
-- [hvoy 免费抽奖](https://hvoy.ai/free-tokens/lottery)
-- [我的抽奖记录](https://hvoy.ai/free-tokens/lottery/mine)
-- [hvoy 免费 API Key](https://hvoy.ai/free-tokens/api-keys)
+- [hvoy 免费抽奖](https://www.hvoyai.com/free-tokens/lottery)
+- [我的抽奖记录](https://www.hvoyai.com/free-tokens/lottery/mine)
+- [hvoy 免费 API Key](https://www.hvoyai.com/free-tokens/api-keys)
 - [CCSwitch 官网快速开始](https://www.ccswitch.io/zh/docs?section=getting-started&item=quickstart)
 - [CCSwitch GitHub Releases](https://github.com/farion1231/cc-switch/releases)
 - [CCSwitch 用户手册](https://github.com/farion1231/cc-switch/blob/main/docs/user-manual/zh/README.md)
