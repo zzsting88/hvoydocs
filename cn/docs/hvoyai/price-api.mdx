@@ -14,18 +14,18 @@ hvoy 已支持 newapi 及部分 sub2api 系统站点的价格抓取。对于暂�
 
 自测链接：https://www.hvoyai.com/docs/provider-price-api-fetch
 
-请准备一个接口，至少返回以下数据：
+## 成功示例
 
-```
+```json
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "success": true,
   "message": "",
   "data": {
     "currency": "CNY",
     "price_unit": "per_1m_tokens",
     "site_name": "hvoy",
-    "site_domain": "www.hvoyai.com",
+    "site_domain": "hvoyai.com",
     "updated_at": "2026-04-22T12:00:00Z",
     "models": [
       {
@@ -47,6 +47,37 @@ hvoy 已支持 newapi 及部分 sub2api 系统站点的价格抓取。对于暂�
         "cache_input_price": 0.125,
         "cache_create_price": 0.5,
         "cache_create_price_1h": null,
+        "enabled": true,
+        "note": ""
+      },
+      {
+        "model_name": "gpt-image-2",
+        "group_name": "sora",
+        "price_unit": "per_call",
+        "unit_price": 0.2,
+        "enabled": true,
+        "note": ""
+      },
+      {
+        "model_name": "doubao-seedance-2.5",
+        "group_name": "video",
+        "price_unit": "per_second",
+        "unit_price": 0.55,
+        "billing_basis": {
+          "resolution": "480p"
+        },
+        "variants": [
+          {
+            "resolution": "480p",
+            "unit_price": 0.55,
+            "ref_video_price": 8.25
+          },
+          {
+            "resolution": "720p",
+            "unit_price": 1.15,
+            "ref_video_price": 17.25
+          }
+        ],
         "enabled": true,
         "note": ""
       }
